@@ -12,5 +12,5 @@ export default function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   const articleType = req.query.type;
-  res.status(200).json({ articles: getLastArticles(6, articleType) });
+  res.status(200).json({ articles: getLastArticles(6, articleType as string) });
 }
