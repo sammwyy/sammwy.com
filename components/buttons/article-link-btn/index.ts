@@ -1,4 +1,4 @@
-import { ProjectLinkButton } from './ProjectLinkButton';
+import { ArticleLinkButton } from './ArticleLinkButton';
 
-export * from './ProjectLinkButton';
-export default ProjectLinkButton;
+export * from './ArticleLinkButton';
+export default ArticleLinkButton;

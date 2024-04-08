@@ -85,6 +85,7 @@ export function ArticleLinkButton({ link }: ArticleLinkButtonProps) {
   const name = names[vendor];
   const label = labels[type];
   const fullLabel = label.replace('{vendor}', name);
+  const hasIcon = Icon !== undefined;
 
   return (
     <Button
@@ -92,7 +93,7 @@ export function ArticleLinkButton({ link }: ArticleLinkButtonProps) {
       href={url}
       target={'_blank'}
       rel={'noopener noreferrer'}
-      leftIcon={<Icon />}
+      leftIcon={hasIcon ? <Icon /> : undefined}
       size={'xs'}
       mr={'10px'}
       mt={'10px'}

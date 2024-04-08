@@ -1,0 +1,14 @@
+{
+    "title": "Milkshake",
+    "description": "Web based MIDI music synthesizer.",
+    "contentURL": "https://github.com/sammwyy/milkshake/raw/main/README.md",
+    "date": "2024-01-03",
+    "tags": ["java", "mongodb"],
+    "links": [
+        {
+            "vendor": "github",
+            "type": "source_code",
+            "url": "https://github.com/sammwyy/milkshake"
+        }
+    ]
+}
