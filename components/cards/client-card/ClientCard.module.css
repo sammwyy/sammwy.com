@@ -1,0 +1,42 @@
+.card {
+  background-color: #1d1d1d;
+  border-radius: 7px;
+  gap: 20px;
+  width: fit-content;
+  height: 100px;
+  align-items: center;
+  padding: 10px;
+}
+
+.avatar {
+  height: 100%;
+  border-radius: 7px;
+}
+
+.data {
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.category {
+  font-weight: lighter;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.comment {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.header {
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}

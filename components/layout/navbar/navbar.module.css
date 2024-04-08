@@ -1,0 +1,39 @@
+.navbar {
+  margin: 10px 0;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 99;
+  backdrop-filter: blur(6px);
+}
+
+.content {
+  padding: 10px 2.5%;
+  width: 95%;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.section {
+  align-items: center;
+  gap: 15px;
+}
+
+.brand {
+  gap: 5px;
+  font-size: 12px;
+}
+
+.link {
+  font-family: rainyhearts;
+  font-size: 22px;
+}
+
+.title {
+  font-family: rainyhearts;
+  background: #f650ff;
+  background: linear-gradient(to right, #f650ff 0%, #00c7fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

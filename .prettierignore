@@ -1,0 +1,12 @@
+next-env.d.ts
+node_modules/
+public/
+.next/
+.vscode
+.env.local
+.env.local_sample
+*.js
+package.json
+README.node_module
+tsconfig.json
+yarn.lock

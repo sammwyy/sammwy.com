@@ -1,0 +1,20 @@
+.badge {
+  gap: 10px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  margin-top: 5px;
+  border: 1px solid #fff1;
+  border-radius: 7px;
+  padding: 4px 8px;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.label {
+  font-size: 18px;
+  font-family: rainyhearts;
+}

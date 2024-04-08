@@ -1,0 +1,26 @@
+{
+    "title": "Test Project",
+    "description": "This is just a test project",
+    "date": "2024-01-01",
+    "category": "test-category",
+    "tags": ["my", "custom", "tags", "rust"],
+    "links": [
+        {
+            "vendor": "github",
+            "type": "source_code",
+            "url": "https://google.com"
+        },
+
+        {
+            "vendor": "playstore",
+            "type": "download",
+            "url": "https://google.com"
+        },
+
+        {
+            "vendor": "appstore",
+            "type": "buy",
+            "url": "https://google.com"
+        }
+    ]
+}

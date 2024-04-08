@@ -1,0 +1,59 @@
+.scroll {
+  position: relative;
+  width: 300vw;
+  height: 100px;
+  overflow-x: hidden;
+  color: white;
+  gap: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+  .scroll {
+    width: 1000vw;
+  }
+}
+
+.primary,
+.secondary {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  justify-content: space-around;
+}
+
+.primary {
+  top: 0%;
+  animation: primary 50s linear infinite;
+}
+
+.secondary {
+  animation: secondary 50s linear infinite;
+}
+
+@media only screen and (max-width: 600px) {
+  .primary {
+    animation: primary 85s linear infinite;
+  }
+
+  .secondary {
+    animation: secondary 85s linear infinite;
+  }
+}
+
+@keyframes primary {
+  from {
+    left: 0%;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes secondary {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0%;
+  }
+}

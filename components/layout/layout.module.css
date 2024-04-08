@@ -1,0 +1,31 @@
+.layout {
+  background-size: 25%;
+  background-repeat: repeat;
+  animation: bg-loop 60s linear infinite;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes bg-loop {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .layout {
+    background-size: 75%;
+  }
+
+  @keyframes bg-loop {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 1000% 100vh;
+    }
+  }
+}
