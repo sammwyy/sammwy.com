@@ -2,6 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import ProgressBar from 'nextjs-progressbar';
 import { ToastContainer } from 'react-toastify';
 
 // Components.
@@ -25,6 +26,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {process.env.NODE_ENV === 'production' && <Analytics />}
       <ToastContainer />
+      <ProgressBar
+        color="#BB86FC"
+        startPosition={0.5}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
 
       <Layout>
         <Component {...pageProps} />
