@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { IconType } from 'react-icons';
 import {
   FaDiscord,
@@ -82,12 +82,30 @@ function SocialLink({ icon: Icon, href, color }: SocialLinkProps) {
 export default function Navbar() {
   const screen = useScreen();
   const isSmall = screen == 'tablet' || screen == 'mobile';
+  const isMid = screen == 'laptop';
 
   const { colorMode } = useColorMode();
   const bg = colorMode === 'light' ? '#dddb' : '#333b';
 
+  const INITIAL_TOP = isSmall || isMid ? '45px' : '35px';
+  const [marginTop, setMarginTop] = useState(INITIAL_TOP);
+
+  useEffect(() => {
+    // Detect page scroll and apply class.
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setMarginTop('15px');
+      } else {
+        setMarginTop(INITIAL_TOP);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [INITIAL_TOP]);
+
   return (
-    <Flex className={styles.navbar}>
+    <Flex className={styles.navbar} mt={marginTop}>
       <Flex
         className={styles.content}
         justifyContent={isSmall ? 'center' : 'space-between'}

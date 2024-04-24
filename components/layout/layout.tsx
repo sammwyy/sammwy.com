@@ -1,8 +1,10 @@
 import { Flex, useColorMode } from '@chakra-ui/react';
+import dynamic from 'next/dynamic';
 import { PropsWithChildren } from 'react';
 
 import styles from './layout.module.css';
-import Navbar from './navbar/navbar';
+import Navbar from './navbar';
+const Player = dynamic(() => import('./player'), { ssr: false });
 
 export default function Layout({ children }: PropsWithChildren) {
   const { colorMode } = useColorMode();
@@ -16,7 +18,9 @@ export default function Layout({ children }: PropsWithChildren) {
       bgImage={`url(${bgImage})`}
       className={styles.layout}
     >
+      <Player />
       <Navbar />
+
       <Flex pt={'100px'} mb={'25px'} width={'100%'}>
         {children}
       </Flex>

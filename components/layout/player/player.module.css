@@ -1,0 +1,44 @@
+.player,
+.controls,
+.bar,
+.volume {
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.player {
+  width: 100%;
+  padding: 9px 3vw;
+  gap: 1vw;
+}
+
+.controls {
+  font-size: 14px;
+  font-family: rainyhearts, sans-serif;
+  max-width: 35%;
+  width: 100%;
+}
+
+.bar {
+  min-width: 50%;
+}
+
+.bar-slider {
+  width: 100%;
+  max-width: 600px;
+}
+
+.volume {
+  max-width: 35%;
+  width: 100%;
+}
+
+.volume-slider {
+  width: 100%;
+  max-width: 110px;
+}
+
+.playlist-menu {
+  backdrop-filter: blur(6px);
+}

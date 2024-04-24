@@ -1,11 +1,11 @@
 .navbar {
-  margin: 10px 0;
   width: 100%;
   align-items: center;
   justify-content: center;
   position: fixed;
   z-index: 99;
   backdrop-filter: blur(6px);
+  transition: all 0.3s;
 }
 
 .content {
