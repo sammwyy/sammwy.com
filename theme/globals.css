@@ -1,4 +1,12 @@
 :root {
+  --main-gradient: linear-gradient(
+    to right,
+    #e7548c 0%,
+    #eb70e7 25%,
+    #7580e6 50%,
+    #07b9f3 75%,
+    #02d3ec 100%
+  );
 }
 
 body {

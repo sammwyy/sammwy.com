@@ -4,28 +4,75 @@ import {
   Heading,
   Image,
   Link,
+  ListItem,
+  OrderedList,
   Table,
   TableContainer,
   Tbody,
+  Text,
   Th,
   Thead,
   Tr,
+  UnorderedList,
   useColorMode,
 } from '@chakra-ui/react';
+import Editor from '@monaco-editor/react';
 import Markdown, { ReactRenderer } from 'marked-react';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { headerToChapterID } from '@/lib/utils';
 
 type CustomReactRenderer = Partial<ReactRenderer>;
 
+function CodeRenderer({
+  children,
+  language,
+}: {
+  children: string;
+  language: string;
+}) {
+  const [value, setValue] = useState(children);
+  const lines = value.split('\n').length + 1;
+  const height = `${lines * 20}px`;
+
+  return (
+    <Editor
+      value={value}
+      onChange={(v) => setValue(v || '')}
+      language={language}
+      theme="vs-dark"
+      options={{
+        formatOnType: true,
+        autoClosingBrackets: 'always',
+        autoClosingQuotes: 'always',
+        lineNumbers: 'on',
+        lineHeight: 20,
+      }}
+      height={height}
+    />
+  );
+}
+
 const renderer: CustomReactRenderer = {
+  code(code, language) {
+    const asStr = code?.toString() || '';
+    return (
+      <CodeRenderer language={language || 'javascript'}>{asStr}</CodeRenderer>
+    );
+  },
   heading(text: ReactNode, level: number) {
     const sizes = ['4xl', '2xl', 'xl', 'lg', 'md'];
     return (
       <Heading
         fontSize={sizes[level - 1]}
         id={headerToChapterID(text?.toString() || '')}
+        fontFamily={'rainyhearts'}
+        background={'var(--main-gradient)'}
+        backgroundClip={'text'}
+        style={{
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
       >
         {text}
       </Heading>
@@ -40,6 +87,27 @@ const renderer: CustomReactRenderer = {
       <Link href={href} color={'purple.300'} isExternal>
         {text}
       </Link>
+    );
+  },
+  list: (children, ordered) => {
+    return ordered ? (
+      <OrderedList>{children}</OrderedList>
+    ) : (
+      <UnorderedList>{children}</UnorderedList>
+    );
+  },
+  listItem: (text) => {
+    return (
+      <ListItem fontFamily={'VictorMono, Arial'} fontSize={'13px'}>
+        {text}
+      </ListItem>
+    );
+  },
+  paragraph: (text) => {
+    return (
+      <Text fontFamily={'VictorMono, Arial'} fontSize={'13px'}>
+        {text}
+      </Text>
     );
   },
   table: (children) => {

@@ -19,8 +19,6 @@ export default function ArticleRenderer(props: ArticleRendererProps) {
   const screen = useScreen();
   const isSmall = screen == 'tablet' || screen == 'mobile';
 
-  console.log(article);
-
   return (
     <>
       <Head>
@@ -61,7 +59,7 @@ export default function ArticleRenderer(props: ArticleRendererProps) {
             padding={'20px 30px'}
             position={'fixed'}
             left={'100px'}
-            top={'100px'}
+            top={'130px'}
           >
             <Flex flexDir={'column'} gap={'10px'}>
               <Heading size={'md'} mt={'10px'}>

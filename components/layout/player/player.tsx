@@ -62,6 +62,7 @@ export function Player() {
   const [currentTrack, setCurrentTrack] = useState<null | AudioClip>(null);
   const [duration, setDuration] = useState(0);
   const [position, setPosition] = useState(0);
+  const [visible, setVisible] = useState(false);
   const [volume, setVolume] = useState(10);
   const [prevVolume, setPrevVolume] = useState(10);
   const audioRef = React.useRef<HTMLAudioElement>(null);
@@ -116,15 +117,26 @@ export function Player() {
     }
   };
 
-  const onTimeUpdate = () => {
+  useEffect(() => {
+    // Detect page scroll.
+    const handleScroll = () => {
+      setVisible(window.scrollY <= 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
     const audio = audioRef.current;
-    if (audio) {
+    if (audio && visible) {
       setPosition(audio.currentTime);
     }
-  };
+  }, [visible]);
 
   useEffect(() => {
     if (currentTrack) {
+      setPosition(0);
       audioRef.current?.load();
       audioRef.current?.play();
     }
@@ -143,7 +155,11 @@ export function Player() {
         src={currentTrack?.url}
         onEnded={nextTrack}
         onLoadedMetadata={onMetadataLoaded}
-        onTimeUpdate={onTimeUpdate}
+        onTimeUpdate={(e) => {
+          if (visible) {
+            setPosition(e.currentTarget.currentTime);
+          }
+        }}
       />
 
       <Flex className={styles.controls}>
@@ -177,7 +193,6 @@ export function Player() {
         <Slider
           aria-label="music-player-slider"
           colorScheme="pink"
-          defaultValue={0}
           max={duration || 9999}
           value={position}
           onChange={seekTo}

@@ -33,7 +33,7 @@
 .title {
   font-family: rainyhearts;
   background: #f650ff;
-  background: linear-gradient(to right, #f650ff 0%, #00c7fe 100%);
+  background: var(--main-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
