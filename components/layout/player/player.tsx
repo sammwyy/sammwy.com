@@ -71,18 +71,16 @@ export function Player() {
   };
 
   const prevTrack = () => {
-    let prevTrack = SHUFFLED.find((track) => track !== currentTrack);
-    if (!prevTrack) {
-      prevTrack = SHUFFLED[SHUFFLED.length - 1];
-    }
+    const currentIndex = SHUFFLED.findIndex((t) => t.url === currentTrack?.url);
+    const prevIndex = currentIndex - 1;
+    const prevTrack = SHUFFLED[prevIndex < 0 ? SHUFFLED.length - 1 : prevIndex];
     setCurrentTrack(prevTrack);
   };
 
   const nextTrack = () => {
-    let nextTrack = SHUFFLED.find((track) => track !== currentTrack);
-    if (!nextTrack) {
-      nextTrack = SHUFFLED[0];
-    }
+    const currentIndex = SHUFFLED.findIndex((t) => t.url === currentTrack?.url);
+    const nextIndex = currentIndex + 1;
+    const nextTrack = SHUFFLED[nextIndex >= SHUFFLED.length ? 0 : nextIndex];
     setCurrentTrack(nextTrack);
   };
 

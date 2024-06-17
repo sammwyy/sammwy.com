@@ -54,7 +54,9 @@ export type DevBadgeIcon =
   | 'mysql'
   | 'nginx'
   | 'redis'
-  | 'vercel';
+  | 'vercel'
+  // Types
+  | 'hacking';
 
 const icons: { [key in DevBadgeIcon]: IconType } = {
   '.net': SI.SiDotnet,
@@ -103,6 +105,7 @@ const icons: { [key in DevBadgeIcon]: IconType } = {
   obs: SI.SiObsstudio,
   vercel: SI.SiVercel,
   typescript: SI.SiTypescript,
+  hacking: SI.SiHackthebox,
 };
 
 const colors: { [key in DevBadgeIcon]: string } = {
@@ -152,6 +155,7 @@ const colors: { [key in DevBadgeIcon]: string } = {
   mysql: '#4479A1',
   redis: '#DC382D',
   vercel: '#000000',
+  hacking: '#FF0000',
 };
 
 export interface DevBadgeProps {
