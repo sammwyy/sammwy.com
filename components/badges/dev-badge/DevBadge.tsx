@@ -1,7 +1,9 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import * as FA from 'react-icons/fa';
 import * as SI from 'react-icons/si';
+
+import Section from '@/components/content/section';
 
 import styles from './DevBadge.module.css';
 
@@ -155,18 +157,20 @@ const colors: { [key in DevBadgeIcon]: string } = {
 export interface DevBadgeProps {
   icon?: DevBadgeIcon;
   children?: string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export function DevBadge({ icon, children }: DevBadgeProps) {
+export function DevBadge({ icon, size, children }: DevBadgeProps) {
   const label = children || '';
   const iconID =
     icon || (label.toLowerCase().replace(/ /g, '-') as DevBadgeIcon);
   const Icon = icons[iconID];
+  const className = styles['badge-' + (size || 'lg')];
 
   return (
-    <Flex className={styles.badge} display={'inline-flex'}>
+    <Section className={className} display={'inline-flex'}>
       {Icon && <Icon color={colors[iconID]} className={styles.icon} />}
       <Text className={styles.label}>{label}</Text>
-    </Flex>
+    </Section>
   );
 }

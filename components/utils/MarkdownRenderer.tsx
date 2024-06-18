@@ -1,6 +1,8 @@
 'use client';
 
 import {
+  chakra,
+  Code,
   Heading,
   Image,
   Link,
@@ -56,23 +58,55 @@ function CodeRenderer({
 const renderer: CustomReactRenderer = {
   code(code, language) {
     const asStr = code?.toString() || '';
+
+    if (language === null || language === undefined || language === 'bash') {
+      return (
+        <Code bg={'black'} color={'#ccc'} p={'10px'} borderRadius={'7px'}>
+          <pre>{asStr}</pre>
+        </Code>
+      );
+    }
+
     return (
       <CodeRenderer language={language || 'javascript'}>{asStr}</CodeRenderer>
     );
   },
   heading(text: ReactNode, level: number) {
     const sizes = ['4xl', '2xl', 'xl', 'lg', 'md'];
+    const parts = text?.toString().split(' ') || [];
+    const reactParts = [];
+
+    const isEmoji = (text: string): boolean => {
+      return text.match(/[\u{1F300}-\u{1F6FF}]/u) !== null;
+    };
+
+    for (const part of parts) {
+      if (isEmoji(part)) {
+        reactParts.push(part);
+      } else {
+        reactParts.push(
+          <Text
+            as={chakra.span}
+            background={'var(--main-gradient)'}
+            backgroundClip={'text'}
+            style={{
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            {reactParts}
+          </Text>,
+        );
+      }
+    }
+
     return (
       <Heading
         fontSize={sizes[level - 1]}
         id={headerToChapterID(text?.toString() || '')}
         fontFamily={'rainyhearts'}
-        background={'var(--main-gradient)'}
-        backgroundClip={'text'}
-        style={{
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-        }}
+        mt={level == 2 ? '30px' : '0px'}
+        alignItems={'center'}
       >
         {text}
       </Heading>
@@ -150,5 +184,7 @@ export interface MarkdownRendererProps {
 }
 
 export default function MarkdownRenderer({ children }: MarkdownRendererProps) {
-  return <Markdown value={children} renderer={renderer} />;
+  return (
+    <Markdown value={children} renderer={renderer} openLinksInNewTab={true} />
+  );
 }

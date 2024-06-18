@@ -5,11 +5,13 @@ export type LinkType =
   | 'buy'
   | 'docs'
   | 'view'
-  | 'other';
+  | 'other'
+  | 'website';
 
 export type LinkVendor =
   // Source code
   | 'github'
+  | 'custom'
 
   // App bundles
   | 'chocolatey'

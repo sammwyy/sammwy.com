@@ -8,6 +8,13 @@
   padding: 10px;
 }
 
+.card:hover {
+  background-color: #e9e9e9;
+  color: #1d1d1d;
+  transition: background-color 70ms;
+  cursor: pointer;
+}
+
 .avatar {
   height: 100%;
   border-radius: 7px;

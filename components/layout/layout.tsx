@@ -1,5 +1,6 @@
 import { Flex, useColorMode } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
 import styles from './layout.module.css';
@@ -11,6 +12,9 @@ export default function Layout({ children }: PropsWithChildren) {
   const bgImage =
     colorMode === 'light' ? '/assets/bg-light.jpg' : '/assets/bg-dark.jpg';
 
+  const { pathname } = useRouter();
+  const isHome = pathname === '/';
+
   return (
     <Flex
       flexDir={'column'}
@@ -21,7 +25,7 @@ export default function Layout({ children }: PropsWithChildren) {
       <Player />
       <Navbar />
 
-      <Flex pt={'100px'} mb={'25px'} width={'100%'}>
+      <Flex pt={'100px'} mb={isHome ? '0px' : '25px'} width={'100%'}>
         {children}
       </Flex>
     </Flex>

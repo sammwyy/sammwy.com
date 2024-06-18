@@ -20,6 +20,7 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 
+import Section from '@/components/content/section';
 import useScreen from '@/hooks/useScreen';
 
 import styles from './navbar.module.css';
@@ -106,7 +107,7 @@ export default function Navbar() {
 
   return (
     <Flex className={styles.navbar} mt={marginTop}>
-      <Flex
+      <Section
         className={styles.content}
         justifyContent={isSmall ? 'center' : 'space-between'}
         bg={bg}
@@ -155,7 +156,7 @@ export default function Navbar() {
             <ToggleModeButton />
           </Flex>
         )}
-      </Flex>
+      </Section>
     </Flex>
   );
 }

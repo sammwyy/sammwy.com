@@ -3,8 +3,21 @@
   width: 300vw;
   height: 100px;
   overflow-x: hidden;
+  display: flex;
+  align-items: center;
   color: white;
-  gap: 100px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .scroll {
+    width: 500vw;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .scroll {
+    width: 700vw;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -15,45 +28,57 @@
 
 .primary,
 .secondary {
-  width: inherit;
-  height: inherit;
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: space-around;
+  position: absolute;
+  animation-play-state: running;
 }
 
 .primary {
-  top: 0%;
-  animation: primary 50s linear infinite;
+  animation: scroll-primary 50s linear infinite;
 }
 
 .secondary {
-  animation: secondary 50s linear infinite;
+  animation: scroll-secondary 50s linear infinite;
+}
+
+@media only screen and (max-width: 1200px) {
+  .primary,
+  .secondary {
+    animation-duration: 60s;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .primary,
+  .secondary {
+    animation-duration: 70s;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-  .primary {
-    animation: primary 85s linear infinite;
-  }
-
+  .primary,
   .secondary {
-    animation: secondary 85s linear infinite;
+    animation-duration: 85s;
   }
 }
 
-@keyframes primary {
+@keyframes scroll-primary {
   from {
-    left: 0%;
+    transform: translateX(0%);
   }
   to {
-    left: -100%;
+    transform: translateX(-100%);
   }
 }
 
-@keyframes secondary {
+@keyframes scroll-secondary {
   from {
-    left: 100%;
+    transform: translateX(100%);
   }
   to {
-    left: 0%;
+    transform: translateX(0%);
   }
 }

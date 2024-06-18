@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="This is just an example" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/icon.png" />
+        <script async src="/assets/vendor/oneko/oneko.js"></script>
       </Head>
 
       {process.env.NODE_ENV === 'production' && <Analytics />}

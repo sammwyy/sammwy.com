@@ -5,7 +5,13 @@ export function Section({ children, ...props }: FlexProps) {
   const bg = colorMode === 'light' ? '#eeeb' : '#333b';
 
   return (
-    <Flex bg={bg} backdropFilter={'blur(6px)'} borderRadius={'17px'} {...props}>
+    <Flex
+      bg={bg}
+      backdropFilter={'blur(6px)'}
+      borderRadius={'17px'}
+      border={'1px solid #fff1'}
+      {...props}
+    >
       {children}
     </Flex>
   );

@@ -1,14 +1,24 @@
 import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { FaClock, FaHeart, FaTag } from 'react-icons/fa';
 
 import DevBadge from '@/components/badges/dev-badge';
 import ClientCard from '@/components/cards/client-card';
+import { WorkCard } from '@/components/cards/work-card';
 import AutoScroll from '@/components/content/auto-scroll';
 import Section from '@/components/content/section';
+import SectionTitle from '@/components/content/section/title';
+import Footer from '@/components/layout/footer';
+import CLIENTS from '@/config/clients';
+import CURRENTLY from '@/config/currently';
+import SKILLS from '@/config/skills';
+import useGTM from '@/hooks/useGTM';
 import useScreen from '@/hooks/useScreen';
 
 export default function Home() {
   const screen = useScreen();
   const isSmall = screen == 'tablet' || screen == 'mobile';
+
+  const time = useGTM(-3);
 
   return (
     <Flex
@@ -33,11 +43,35 @@ export default function Home() {
         A Software Engineer
       </Heading>
 
+      {/* Brief */}
+      <Flex
+        mt={'50px'}
+        w={'95%'}
+        maxWidth={'720px'}
+        justifyContent={'space-between'}
+        fontFamily={'rainyhearts'}
+        userSelect={'none'}
+        gap={'10px'}
+      >
+        {/* Time */}
+        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'}>
+          <FaClock size={'15px'} /> {time}
+        </Section>
+
+        {/* Pronouns */}
+        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'}>
+          <FaTag size={'15px'} /> She/Her
+        </Section>
+
+        {/* Personality */}
+        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'}>
+          <FaHeart size={'15px'} /> INTJ
+        </Section>
+      </Flex>
+
       {/* About me */}
-      <Section mt={'50px'} p={'10px 20px'} flexDir={'column'} maxWidth={'95%'}>
-        <Heading color={'inherit'} size={'lg'}>
-          ✨ About me
-        </Heading>
+      <Section p={'10px 20px'} flexDir={'column'} maxWidth={'95%'}>
+        <SectionTitle icon="/assets/icons/cinnamon.png">About me</SectionTitle>
 
         <Text
           maxWidth={'700px'}
@@ -61,108 +95,9 @@ export default function Home() {
         </Heading>
 
         <AutoScroll>
-          <ClientCard
-            username={'Rubius'}
-            category={'Streamer'}
-            comment={'Twitch integrations and minecraft modding.'}
-            avatar={'/clients/rubius.jpg'}
-            link={'https://twitch.tv/rubius'}
-          />
-
-          <ClientCard
-            username={'Robleis'}
-            category={'Streamer'}
-            comment={'Twitch integrations and minecraft modding.'}
-            avatar={'/clients/robleis.png'}
-            link={'https://www.twitch.tv/robleis'}
-          />
-
-          <ClientCard
-            username={'Carreraaa'}
-            category={'Streamer'}
-            comment={'Twitch integrations.'}
-            avatar={'/clients/carreraaa.png'}
-            link={'https://www.twitch.tv/carreraaa'}
-          />
-          <ClientCard
-            username={'xCry'}
-            category={'Streamer'}
-            comment={'Twitch integrations and minecraft modding.'}
-            avatar={'/clients/xcry.png'}
-            link={'https://www.twitch.tv/xcry'}
-          />
-
-          <ClientCard
-            username={'Staryuuki'}
-            category={'Streamer'}
-            comment={'Twitch integrations.'}
-            avatar={'/clients/staryuuki.png'}
-            link={'https://www.twitch.tv/staryuuki'}
-          />
-
-          <ClientCard
-            username={'Spreen'}
-            category={'Streamer'}
-            comment={'Twitch integrations.'}
-            avatar={'/clients/spreen.png'}
-            link={'https://www.twitch.tv/elspreen'}
-          />
-
-          <ClientCard
-            username={'Farfadox'}
-            category={'YouTuber/Streamer'}
-            comment={'Software development.'}
-            avatar={'/clients/farfadox.png'}
-            link={'https://www.twitch.tv/farfadoxvevo'}
-          />
-
-          <ClientCard
-            username="Lexosi"
-            category="Streamer"
-            comment="Minecraft modding."
-            avatar="/clients/lexosi.jpeg"
-            link="https://www.twitch.tv/lexosi"
-          />
-
-          <ClientCard
-            username="Soarinng"
-            category="Streamer"
-            comment="Minecraft modding."
-            avatar="/clients/soarinng.png"
-            link="https://www.twitch.tv/soarinng"
-          />
-
-          <ClientCard
-            username="Alexby11"
-            category="Streamer"
-            comment="Game server Management."
-            avatar="/clients/alexby11.jpg"
-            link="https://www.twitch.tv/alexby11"
-          />
-
-          <ClientCard
-            username="Pipepino"
-            category="YouTuber"
-            comment="Website development."
-            avatar="/clients/pipepino.jpg"
-            link="https://www.youtube.com/c/Pipepino"
-          />
-
-          <ClientCard
-            username="Jota"
-            category="YouTuber"
-            comment="Website development."
-            avatar="/clients/jota.jpg"
-            link="https://www.youtube.com/@Jota."
-          />
-
-          <ClientCard
-            username="FapParaMoar"
-            category="Streamer"
-            comment="Twitch integrations."
-            avatar="/clients/fapparamoar.webp"
-            link="https://www.twitch.tv/fapparamoar"
-          />
+          {CLIENTS.map((c, i) => (
+            <ClientCard key={i} {...c} />
+          ))}
         </AutoScroll>
       </Flex>
 
@@ -172,107 +107,76 @@ export default function Home() {
           Skills
         </Heading>
 
-        <Section
-          p={'10px 20px'}
-          flexDir={'column'}
-          maxWidth={'700px'}
-          width={'95%'}
-        >
-          <Heading color={'inherit'} size={'lg'}>
-            ☕ Languages
-          </Heading>
+        {SKILLS.map((group, i) => (
+          <Section
+            key={i}
+            p={'10px 20px'}
+            flexDir={'column'}
+            maxWidth={'700px'}
+            width={'95%'}
+          >
+            <Heading color={'inherit'} size={'lg'}>
+              {group.title}
+            </Heading>
 
-          <Box width={'100%'} mt={'10px'}>
-            <DevBadge>Bash</DevBadge>
-            <DevBadge>C#</DevBadge>
-            <DevBadge>CSS</DevBadge>
-            <DevBadge>HTML</DevBadge>
-            <DevBadge>Java</DevBadge>
-            <DevBadge>JavaScript</DevBadge>
-            <DevBadge>Markdown</DevBadge>
-            <DevBadge>Python</DevBadge>
-            <DevBadge>Rust</DevBadge>
-            <DevBadge>Sass</DevBadge>
-            <DevBadge>SQL</DevBadge>
-            <DevBadge>TypeScript</DevBadge>
-          </Box>
-        </Section>
-
-        <Section
-          p={'10px 20px'}
-          flexDir={'column'}
-          maxWidth={'700px'}
-          width={'95%'}
-        >
-          <Heading color={'inherit'} size={'lg'}>
-            📚 Frameworks and Libraries
-          </Heading>
-
-          <Box width={'100%'} mt={'10px'}>
-            <DevBadge>Apollo</DevBadge>
-            <DevBadge>Bootstrap</DevBadge>
-            <DevBadge>.NET</DevBadge>
-            <DevBadge>Electron</DevBadge>
-            <DevBadge>Express</DevBadge>
-            <DevBadge>GitHub Actions</DevBadge>
-            <DevBadge>GraphQL</DevBadge>
-            <DevBadge>Junit</DevBadge>
-            <DevBadge>NestJS</DevBadge>
-            <DevBadge>NextJS</DevBadge>
-            <DevBadge>React</DevBadge>
-            <DevBadge>Tauri</DevBadge>
-            <DevBadge>Unity</DevBadge>
-          </Box>
-        </Section>
-
-        <Section
-          p={'10px 20px'}
-          flexDir={'column'}
-          maxWidth={'700px'}
-          width={'95%'}
-        >
-          <Heading color={'inherit'} size={'lg'}>
-            🔨 Tools
-          </Heading>
-
-          <Box width={'100%'} mt={'10px'}>
-            <DevBadge>Apache</DevBadge>
-            <DevBadge>Apache Maven</DevBadge>
-            <DevBadge>Debian</DevBadge>
-            <DevBadge>Git</DevBadge>
-            <DevBadge>Insomnia</DevBadge>
-            <DevBadge>Nginx</DevBadge>
-            <DevBadge>Notion</DevBadge>
-            <DevBadge>OBS</DevBadge>
-            <DevBadge>Trello</DevBadge>
-            <DevBadge>Ubuntu</DevBadge>
-            <DevBadge>Visual Studio Code</DevBadge>
-          </Box>
-        </Section>
-
-        <Section
-          p={'10px 20px'}
-          flexDir={'column'}
-          maxWidth={'700px'}
-          width={'95%'}
-        >
-          <Heading color={'inherit'} size={'lg'}>
-            ☁ Cloud and Providers
-          </Heading>
-
-          <Box width={'100%'} mt={'10px'}>
-            <DevBadge>AWS</DevBadge>
-            <DevBadge>Cloudflare</DevBadge>
-            <DevBadge>GitHub Pages</DevBadge>
-            <DevBadge>MariaDB</DevBadge>
-            <DevBadge>MongoDB</DevBadge>
-            <DevBadge>MySQL</DevBadge>
-            <DevBadge>Nginx</DevBadge>
-            <DevBadge>Redis</DevBadge>
-            <DevBadge>Vercel</DevBadge>
-          </Box>
-        </Section>
+            <Box width={'100%'} mt={'10px'}>
+              {group.skills.map((skill, j) => (
+                <DevBadge key={j}>{skill}</DevBadge>
+              ))}
+            </Box>
+          </Section>
+        ))}
       </Flex>
+
+      {/* Currently working on */}
+      <Flex
+        flexDir={'column'}
+        alignItems={'center'}
+        gap={'20px'}
+        my={'70px'}
+        maxW={'95%'}
+      >
+        <Heading color={'inherit'} size={'lg'}>
+          Currently working on
+        </Heading>
+
+        {CURRENTLY.map(({ description, ...work }, i) => (
+          <WorkCard key={i} {...work}>
+            {description}
+          </WorkCard>
+        ))}
+      </Flex>
+
+      <Footer>
+        <Flex
+          flexDir={isSmall ? 'column' : 'row'}
+          alignItems={'center'}
+          justifyContent={'space-around'}
+          fontSize={'13px'}
+          w={'100%'}
+          color={'gray'}
+        >
+          <Flex gap={'5px'}>
+            BTC{' '}
+            <Text color={'purple.500'}>
+              bc1q4uzvtx6nsgt7pt7678p9rqel4hkhskpxvck8uq
+            </Text>
+          </Flex>
+          <Flex gap={'5px'}>
+            ETH/BSC{' '}
+            <Text color={'purple.500'}>
+              0x7a70a0C1889A9956460c3c9DCa8169F25Bb098af
+            </Text>
+          </Flex>
+
+          <Flex gap={'5px'}>
+            SOL{' '}
+            <Text color={'purple.500'}>
+              7UcE4PzrHoGqFKHyVgsme6CdRSECCZAoWipsHntu5rZx
+            </Text>
+          </Flex>
+        </Flex>
+      </Footer>
     </Flex>
   );
 }

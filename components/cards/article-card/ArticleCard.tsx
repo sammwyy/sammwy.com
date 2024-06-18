@@ -30,7 +30,7 @@ export function ArticleCard({ article }: ArticleProps) {
           src={article.thumbnail}
         />
 
-        <Section borderRadius={'0'}>
+        <Section className={styles.section} borderRadius={'0'}>
           <CardBody className={styles.body}>
             <Text className={styles.title}>{article.title}</Text>
             <Text className={styles.description}>{article.description}</Text>

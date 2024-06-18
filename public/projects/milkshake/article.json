@@ -1,6 +1,6 @@
 {
     "title": "Milkshake",
-    "description": "Web based MIDI music synthesizer.",
+    "description": "Java MongoDB ORM.",
     "contentURL": "https://github.com/sammwyy/milkshake/raw/main/README.md",
     "date": "2024-01-03",
     "tags": ["java", "mongodb"],
