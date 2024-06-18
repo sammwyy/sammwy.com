@@ -19,7 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <Head>
         <title>/sammwy/ - ପ(๑•ᴗ•๑)ଓ ♡</title>
-        <meta name="description" content="This is just an example" />
+        <meta
+          name="description"
+          content="≽^•⩊•^≼ ୧ ‧₊˚ 🍓 ⋅ ☆ ໒꒰ྀིっ˕ -｡꒱ྀི১ Nyan meow prr"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/icon.png" />
         <script async src="/assets/vendor/oneko/oneko.js"></script>
