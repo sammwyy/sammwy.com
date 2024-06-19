@@ -153,7 +153,7 @@ We already have our function to write to memory, but we have to make a change in
 Previously we had the following line, which opens a read-only process.
 
 ```bash
-let handle = unsafe { OpenProcess(PROCESS_ALL_ACCESS, false, pid) };
+let handle = unsafe { OpenProcess(PROCESS_VM_READ, false, pid) };
 ```
 
 Now we are going to open the process with all the permissions to be able to write to it.
