@@ -58,8 +58,13 @@ function CodeRenderer({
 const renderer: CustomReactRenderer = {
   code(code, language) {
     const asStr = code?.toString() || '';
+    const nonRender = ['bash', 'shell', 'plaintext'];
 
-    if (language === null || language === undefined || language === 'bash') {
+    if (
+      language === null ||
+      language === undefined ||
+      nonRender.includes(language)
+    ) {
       return (
         <Code bg={'black'} color={'#ccc'} p={'10px'} borderRadius={'7px'}>
           <pre>{asStr}</pre>
@@ -113,7 +118,10 @@ const renderer: CustomReactRenderer = {
     );
   },
   image(src: string, alt: string) {
-    const fixedSrc = `/api/image?url=${encodeURIComponent(src)}`;
+    const isRelative = src.startsWith('/') || src.startsWith('./');
+    const fixedSrc = isRelative
+      ? src
+      : `/api/image?url=${encodeURIComponent(src)}`;
     return <Image src={fixedSrc} alt={alt} />;
   },
   link(href: string, text: string) {

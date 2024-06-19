@@ -6,6 +6,10 @@ import fetch from 'node-fetch';
 import Article from './article';
 import { getURL } from './utils';
 
+function mustCache() {
+  return process.env.NODE_ENV === 'production';
+}
+
 class ArticleFetcher {
   private cached: Article[] | null;
   private cachedContent: { [key: string]: string };
@@ -36,12 +40,14 @@ class ArticleFetcher {
   }
 
   getArticles() {
-    if (this.cached) {
+    if (this.cached && mustCache()) {
       return this.cached;
     }
 
     const articles = this.resolveArticles();
-    this.cached = articles;
+    if (mustCache()) {
+      this.cached = articles;
+    }
     return articles;
   }
 

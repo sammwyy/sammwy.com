@@ -1,0 +1,7 @@
+{
+    "title": "Proc Memory hacking",
+    "description": "Reading and writing to the memory of an arbitrary process with Rust.",
+    "date": "2024-01-01",
+    "category": "rust",
+    "tags": ["rust", "hacking"]
+}
