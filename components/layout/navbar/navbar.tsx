@@ -13,6 +13,7 @@ import { IconType } from 'react-icons';
 import {
   FaDiscord,
   FaGithub,
+  FaMastodon,
   FaMoon,
   FaSun,
   FaTwitch,
@@ -70,7 +71,7 @@ interface SocialLinkProps {
 
 function SocialLink({ icon: Icon, href, color }: SocialLinkProps) {
   return (
-    <Link href={href} rel={'noopener noreferrer'} target={'_blank'}>
+    <Link href={href} rel={'me noopener noreferrer'} target={'_blank'}>
       <IconButton
         aria-label="Social Link"
         icon={<Icon color={color} />}
@@ -131,6 +132,11 @@ export default function Navbar() {
               href={'https://twitter.com/sammwy'}
               icon={FaTwitter}
               color={'#1DA1F2'}
+            />
+            <SocialLink
+              href={'https://floss.social/@sammwy'}
+              icon={FaMastodon}
+              color={'#2b90d9'}
             />
             <SocialLink
               href={'https://github.com/sammwyy'}
