@@ -1,0 +1,20 @@
+{
+    "title": "WebLLM",
+    "description": "A WebLLM backed AI Chat client thats runs on the browser.",
+    "contentURL": "https://github.com/sammwyy/WebLLM/raw/main/README.md",
+    "date": "2024-06-28",
+    "tags": ["react", "typescript", "vite"],
+    "links": [
+        {
+            "vendor": "github",
+            "type": "source_code",
+            "url": "https://github.com/sammwyy/WebLLM"
+        },
+
+        {
+            "vendor": "other",
+            "type": "live_demo",
+            "url": "https://web-llm.sammwy.com"
+        }
+    ]
+}

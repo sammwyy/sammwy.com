@@ -2,6 +2,14 @@ import { ClientCardProps } from '@/components/cards/client-card';
 
 const CLIENTS: ClientCardProps[] = [
   {
+    username: 'Eufonia Studio',
+    category: 'Company',
+    comment: 'Minecraft modding.',
+    avatar: '/assets/clients/eufonia.jpg',
+    link: 'https://x.com/eufoniastudio',
+  },
+
+  {
     username: 'Rubius',
     category: 'Streamer',
     comment: 'Twitch integrations and minecraft modding.',

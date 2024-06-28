@@ -41,13 +41,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-
-      {/* Hidden links for Web authentication. */}
-      <div style={{ display: 'none' }}>
-        <a rel="me" href="https://floss.social/@sammwy">
-          Mastodon
-        </a>
-      </div>
     </ChakraProvider>
   );
 }

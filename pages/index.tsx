@@ -7,7 +7,6 @@ import { WorkCard } from '@/components/cards/work-card';
 import AutoScroll from '@/components/content/auto-scroll';
 import Section from '@/components/content/section';
 import SectionTitle from '@/components/content/section/title';
-import Footer from '@/components/layout/footer';
 import CLIENTS from '@/config/clients';
 import CURRENTLY from '@/config/currently';
 import SKILLS from '@/config/skills';
@@ -146,37 +145,6 @@ export default function Home() {
           </WorkCard>
         ))}
       </Flex>
-
-      <Footer>
-        <Flex
-          flexDir={isSmall ? 'column' : 'row'}
-          alignItems={'center'}
-          justifyContent={'space-around'}
-          fontSize={'13px'}
-          w={'100%'}
-          color={'gray'}
-        >
-          <Flex gap={'5px'}>
-            BTC{' '}
-            <Text color={'purple.500'}>
-              bc1q4uzvtx6nsgt7pt7678p9rqel4hkhskpxvck8uq
-            </Text>
-          </Flex>
-          <Flex gap={'5px'}>
-            ETH/BSC{' '}
-            <Text color={'purple.500'}>
-              0x7a70a0C1889A9956460c3c9DCa8169F25Bb098af
-            </Text>
-          </Flex>
-
-          <Flex gap={'5px'}>
-            SOL{' '}
-            <Text color={'purple.500'}>
-              7UcE4PzrHoGqFKHyVgsme6CdRSECCZAoWipsHntu5rZx
-            </Text>
-          </Flex>
-        </Flex>
-      </Footer>
     </Flex>
   );
 }

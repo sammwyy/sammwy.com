@@ -1,0 +1,14 @@
+{
+    "title": "Hacklib",
+    "description": "Game/Process hacking library built in rust.",
+    "contentURL": "https://github.com/sammwyy/hacklib/raw/main/README.md",
+    "date": "2024-05-20",
+    "tags": ["rust", "hacking"],
+    "links": [
+        {
+            "vendor": "github",
+            "type": "source_code",
+            "url": "https://github.com/sammwyy/hacklib"
+        }
+    ]
+}

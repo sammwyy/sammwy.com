@@ -1,0 +1,20 @@
+{
+    "title": "Rz",
+    "description": "Cross-platform fast and secure de/compression tool.",
+    "contentURL": "https://github.com/sammwyy/Rz/raw/main/README.md",
+    "date": "2024-06-11",
+    "tags": ["rust"],
+    "links": [
+        {
+            "vendor": "github",
+            "type": "source_code",
+            "url": "https://github.com/sammwyy/Rz"
+        },
+
+        {
+            "vendor": "github",
+            "type": "download",
+            "url": "https://github.com/sammwyy/Rz/releases"
+        }
+    ]
+}
