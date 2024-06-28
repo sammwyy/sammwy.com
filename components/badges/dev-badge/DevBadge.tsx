@@ -55,6 +55,12 @@ export type DevBadgeIcon =
   | 'nginx'
   | 'redis'
   | 'vercel'
+  | 'vite'
+  | 'tailwindcss'
+  | 'chakraui'
+  | 'arduino'
+  | 'raspberrypi'
+  | 'bluetooth'
   // Types
   | 'hacking';
 
@@ -105,6 +111,13 @@ const icons: { [key in DevBadgeIcon]: IconType } = {
   obs: SI.SiObsstudio,
   vercel: SI.SiVercel,
   typescript: SI.SiTypescript,
+  tailwindcss: SI.SiTailwindcss,
+  vite: SI.SiVite,
+  chakraui: SI.SiChakraui,
+  arduino: SI.SiArduino,
+  raspberrypi: SI.SiRaspberrypi,
+  bluetooth: SI.SiBluetooth,
+
   hacking: SI.SiHackthebox,
 };
 
@@ -155,6 +168,13 @@ const colors: { [key in DevBadgeIcon]: string } = {
   mysql: '#4479A1',
   redis: '#DC382D',
   vercel: '#000000',
+  vite: '#646CFF',
+  tailwindcss: '#38B2AC',
+  chakraui: '#319795',
+  arduino: '#00979D',
+  raspberrypi: '#C51A4A',
+  bluetooth: '#0082FC',
+
   hacking: '#FF0000',
 };
 

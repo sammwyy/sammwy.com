@@ -26,6 +26,7 @@ const frameworks: SkillGroup = {
   skills: [
     'Apollo',
     'Bootstrap',
+    'ChakraUI',
     '.NET',
     'Electron',
     'Express',
@@ -35,8 +36,10 @@ const frameworks: SkillGroup = {
     'NestJS',
     'NextJS',
     'React',
+    'TailwindCSS',
     'Tauri',
     'Unity',
+    'Vite',
   ],
 };
 
@@ -71,6 +74,11 @@ const clouds: SkillGroup = {
   ],
 };
 
-const SKILLS: SkillGroup[] = [languages, frameworks, tools, clouds];
+const hardware: SkillGroup = {
+  title: '🔌 Hardware',
+  skills: ['Arduino', 'Bluetooth', 'RaspberryPI'],
+};
+
+const SKILLS: SkillGroup[] = [languages, frameworks, tools, clouds, hardware];
 
 export default SKILLS;
