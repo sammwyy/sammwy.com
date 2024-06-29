@@ -58,7 +58,7 @@ class ArticleFetcher {
     );
 
     if (article) {
-      if (this.cachedContent[article.slug]) {
+      if (mustCache() && this.cachedContent[article.slug]) {
         article.content = this.cachedContent[article.slug];
       } else if (article.contentURL) {
         const req = await fetch(article.contentURL);
@@ -76,6 +76,14 @@ class ArticleFetcher {
         this.cachedContent[article.slug] = content;
         article.content = content;
       }
+    }
+
+    while (article.content.includes('{{media:')) {
+      const start = article.content.indexOf('{{media:');
+      const end = article.content.indexOf('}}', start);
+      const media = article.content.slice(start + 8, end);
+      const mediaURL = `/${this.directory}/${article.slug}/media/${media}`;
+      article.content = article.content.replace(`{{media:${media}}}`, mediaURL);
     }
 
     return article || null;
