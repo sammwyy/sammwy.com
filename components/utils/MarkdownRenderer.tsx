@@ -64,7 +64,7 @@ function MathRenderer({ children }: { children: string }) {
 const renderer: CustomReactRenderer = {
   code(code, language) {
     const asStr = code?.toString() || '';
-    const nonRender = ['bash', 'shell', 'plaintext'];
+    const nonRender = ['bash', 'shell', 'plaintext', ''];
     const isMath = language === 'math';
 
     // If the language is not defined, or is not supported, render as plaintext
@@ -74,7 +74,13 @@ const renderer: CustomReactRenderer = {
       nonRender.includes(language)
     ) {
       return (
-        <Code bg={'black'} color={'#ccc'} p={'10px'} borderRadius={'7px'}>
+        <Code
+          bg={'black'}
+          color={'#ccc'}
+          p={'10px'}
+          borderRadius={'7px'}
+          my={'5px'}
+        >
           <pre>{asStr}</pre>
         </Code>
       );
@@ -156,7 +162,7 @@ const renderer: CustomReactRenderer = {
   },
   listItem: (text) => {
     return (
-      <ListItem fontFamily={'VictorMono, Arial'} fontSize={'13px'}>
+      <ListItem fontFamily={'VictorMono, Arial'} fontSize={'13px'} my={'3px'}>
         {text}
       </ListItem>
     );

@@ -2,6 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 import ProgressBar from 'nextjs-progressbar';
 import { ToastContainer } from 'react-toastify';
 
@@ -17,6 +18,8 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <Script async src="/assets/vendor/oneko/oneko.js"></Script>
+
       <Head>
         <title>/sammwy/ - ପ(๑•ᴗ•๑)ଓ ♡</title>
         <meta
@@ -24,8 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="≽^•⩊•^≼ ୧ ‧₊˚ 🍓 ⋅ ☆ ໒꒰ྀིっ˕ -｡꒱ྀི১ Nyan meow prr"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/icon.png" />
-        <script async src="/assets/vendor/oneko/oneko.js"></script>
+        <link rel="icon" href="/assets/favicon.webp" />
       </Head>
 
       {process.env.NODE_ENV === 'production' && <Analytics />}
