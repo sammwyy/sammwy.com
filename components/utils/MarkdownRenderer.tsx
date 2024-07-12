@@ -64,7 +64,7 @@ function MathRenderer({ children }: { children: string }) {
 const renderer: CustomReactRenderer = {
   code(code, language) {
     const asStr = code?.toString() || '';
-    const nonRender = ['bash', 'shell', 'plaintext', ''];
+    const nonRender = ['bash', 'shell', 'plaintext', 'sh', 'sql', ''];
     const isMath = language === 'math';
 
     // If the language is not defined, or is not supported, render as plaintext
@@ -79,6 +79,7 @@ const renderer: CustomReactRenderer = {
           color={'#ccc'}
           p={'10px'}
           borderRadius={'7px'}
+          w={'100%'}
           my={'5px'}
         >
           <pre>{asStr}</pre>
