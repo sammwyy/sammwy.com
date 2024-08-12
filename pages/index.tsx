@@ -53,23 +53,23 @@ export default function Home() {
         gap={'10px'}
       >
         {/* Time */}
-        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'}>
+        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'} orbit>
           <FaClock size={'15px'} /> {time}
         </Section>
 
         {/* Pronouns */}
-        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'}>
+        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'} orbit>
           <FaTag size={'15px'} /> She/Her
         </Section>
 
         {/* Personality */}
-        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'}>
+        <Section p={'10px 20px'} alignItems={'center'} gap={'7px'} orbit>
           <FaHeart size={'15px'} /> INTJ
         </Section>
       </Flex>
 
       {/* About me */}
-      <Section p={'10px 20px'} flexDir={'column'} maxWidth={'95%'}>
+      <Section p={'10px 20px'} flexDir={'column'} maxWidth={'95%'} orbit={25}>
         <SectionTitle icon="/assets/icons/cinnamon.png">About me</SectionTitle>
 
         <Text
@@ -113,6 +113,7 @@ export default function Home() {
             flexDir={'column'}
             maxWidth={'700px'}
             width={'95%'}
+            orbit={25}
           >
             <Heading color={'inherit'} size={'lg'}>
               {group.title}
