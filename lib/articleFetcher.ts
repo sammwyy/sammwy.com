@@ -36,7 +36,9 @@ class ArticleFetcher {
       };
     });
 
-    return articles;
+    return articles.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    );
   }
 
   getArticles() {
