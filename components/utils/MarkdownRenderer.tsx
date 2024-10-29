@@ -51,6 +51,10 @@ function CodeRenderer({
         autoClosingQuotes: 'always',
         lineNumbers: 'on',
         lineHeight: 20,
+        minimap: { enabled: false },
+        readOnly: true,
+        scrollBeyondLastLine: false,
+        theme: 'vs-dark',
       }}
       height={height}
     />
@@ -77,10 +81,11 @@ const renderer: CustomReactRenderer = {
         <Code
           bg={'black'}
           color={'#ccc'}
-          p={'10px'}
+          p={'15px 10px'}
           borderRadius={'7px'}
           w={'100%'}
           my={'5px'}
+          overflowX={'auto'}
         >
           <pre>{asStr}</pre>
         </Code>
