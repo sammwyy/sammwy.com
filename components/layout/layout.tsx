@@ -1,6 +1,5 @@
 import { Flex, Text, useColorMode } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 
 import useScreen from '@/hooks/useScreen';
@@ -14,8 +13,6 @@ export default function Layout({ children }: PropsWithChildren) {
   const { colorMode } = useColorMode();
   const bgImage =
     colorMode === 'light' ? '/assets/bg-light.jpg' : '/assets/bg-dark.jpg';
-
-  const { pathname } = useRouter();
 
   const screen = useScreen();
   const isSmall = screen == 'tablet' || screen == 'mobile';
