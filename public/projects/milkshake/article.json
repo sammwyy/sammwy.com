@@ -1,9 +1,12 @@
 {
     "title": "Milkshake",
-    "description": "Java MongoDB ORM.",
+    "description": "MongoDB ORM/ODM for Java.",
     "contentURL": "https://github.com/sammwyy/milkshake/raw/main/README.md",
     "date": "2024-01-03",
-    "tags": ["java", "mongodb"],
+    "tags": [
+        "java",
+        "mongodb"
+    ],
     "links": [
         {
             "vendor": "github",
