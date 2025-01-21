@@ -1,6 +1,6 @@
 import { Button, chakra } from '@chakra-ui/react';
-import { FaStore } from 'react-icons/fa';
-import { IconType } from 'react-icons/lib/esm/iconBase';
+import { IconType } from 'react-icons';
+import { FaGlobe, FaStore } from 'react-icons/fa';
 import {
   SiApachemaven,
   SiAppstore,
@@ -42,6 +42,7 @@ const names: { [key in LinkVendor]: string } = {
   steam: 'Steam',
   windows_store: 'Windows Store',
   xbox: 'Xbox',
+  custom: '',
 };
 
 const icons: { [key in LinkVendor]: IconType } = {
@@ -63,6 +64,7 @@ const icons: { [key in LinkVendor]: IconType } = {
   steam: SiSteam,
   xbox: SiXbox,
   windows_store: SiWindows,
+  custom: FaGlobe,
 };
 
 const labels: { [key in LinkType]: string } = {
@@ -73,6 +75,7 @@ const labels: { [key in LinkType]: string } = {
   other: 'Visit {vendor}',
   source_code: 'Source code',
   view: 'View on {vendor}',
+  website: 'Visit website',
 };
 
 export interface ArticleLinkButtonProps {

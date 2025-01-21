@@ -17,37 +17,15 @@ import {
 import React, { useEffect, useState } from 'react';
 import * as MD from 'react-icons/md';
 
+import PLAYLIST from '@/config/playlist';
 import useScreen from '@/hooks/useScreen';
 
 import styles from './player.module.css';
 
-interface AudioClip {
+export interface AudioClip {
   name: string;
   url: string;
 }
-
-const PLAYLIST: AudioClip[] = [
-  {
-    name: 'Siinamota - Young Girl A',
-    url: 'https://shared.sammwy.com/_personal_files_/music/Siinamota%20-%20Young%20Girl%20A%20%20%E5%B0%91%E5%A5%B3A.mp3',
-  },
-  {
-    name: 'Inabakumori - Relayouter',
-    url: 'https://shared.sammwy.com/_personal_files_/music/Inabakumori%20-%20Relayouter.mp3',
-  },
-  {
-    name: 'Inabakumori - Yoyuyoku',
-    url: 'https://shared.sammwy.com/_personal_files_/music/inabakumori%20-%20Yoyuyoku.mp3',
-  },
-  {
-    name: 'Tada Jojo - BreakPoint',
-    url: 'https://shared.sammwy.com/_personal_files_/music/Tada%20Jojo%20-%20BreakPoint.mp3',
-  },
-  {
-    name: 'UYINX - Silly ourple',
-    url: 'https://shared.sammwy.com/_personal_files_/music/UYINX%20-%20Silly%20ourple.mp3',
-  },
-];
 
 const SHUFFLED = PLAYLIST.slice().sort(() => Math.random() - 0.5);
 
@@ -93,18 +71,16 @@ export function Player() {
   };
 
   const prevTrack = () => {
-    let prevTrack = SHUFFLED.find((track) => track !== currentTrack);
-    if (!prevTrack) {
-      prevTrack = SHUFFLED[SHUFFLED.length - 1];
-    }
+    const currentIndex = SHUFFLED.findIndex((t) => t.url === currentTrack?.url);
+    const prevIndex = currentIndex - 1;
+    const prevTrack = SHUFFLED[prevIndex < 0 ? SHUFFLED.length - 1 : prevIndex];
     setCurrentTrack(prevTrack);
   };
 
   const nextTrack = () => {
-    let nextTrack = SHUFFLED.find((track) => track !== currentTrack);
-    if (!nextTrack) {
-      nextTrack = SHUFFLED[0];
-    }
+    const currentIndex = SHUFFLED.findIndex((t) => t.url === currentTrack?.url);
+    const nextIndex = currentIndex + 1;
+    const nextTrack = SHUFFLED[nextIndex >= SHUFFLED.length ? 0 : nextIndex];
     setCurrentTrack(nextTrack);
   };
 
@@ -163,7 +139,11 @@ export function Player() {
       />
 
       <Flex className={styles.controls}>
-        {!isSmall && <Text>{currentTrack?.name || SHUFFLED[0].name}</Text>}
+        {!isSmall && (
+          <Text wordBreak={'break-all'}>
+            {currentTrack?.name || SHUFFLED[0].name}
+          </Text>
+        )}
 
         {!isSmall && (
           <IconButton
@@ -212,7 +192,13 @@ export function Player() {
             icon={<MD.MdPlaylistPlay />}
             variant={'link'}
           />
-          <MenuList className={styles['playlist-menu']} bg={bg} zIndex={9999}>
+          <MenuList
+            className={styles['playlist-menu']}
+            bg={bg}
+            zIndex={9999}
+            overflowY={'auto'}
+            maxHeight={'50vh'}
+          >
             {SHUFFLED.map((track, i) => (
               <MenuItem
                 key={i}

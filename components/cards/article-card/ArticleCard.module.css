@@ -6,12 +6,12 @@
   cursor: pointer;
   transition: all 140ms ease-in-out;
   background-color: transparent !important;
+  backdrop-filter: blur(6px);
 }
 
 .card:hover {
   background-color: transparent !important;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
 }
 
 .thumbnail {

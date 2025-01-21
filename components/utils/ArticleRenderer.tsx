@@ -1,5 +1,5 @@
 import { Flex, Heading, Link, Text } from '@chakra-ui/react';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import Section from '@/components/content/section';
 import MarkdownRenderer from '@/components/utils/MarkdownRenderer';
@@ -21,31 +21,28 @@ export default function ArticleRenderer(props: ArticleRendererProps) {
 
   return (
     <>
-      <Head>
-        <title>{article?.title} - ପ(๑•ᴗ•๑)ଓ ♡</title>
-        <meta name="description" content={article?.description} />
-
-        {/* SEO: Open Graph */}
-        <meta property="og:image" content={article?.thumbnail}></meta>
-        <meta property="og:title" content={article?.title}></meta>
-        <meta property="og:description" content={article?.description}></meta>
-        <meta property="og:type" content="article"></meta>
-        <meta
-          property="og:url"
-          content={getURL() + '/blog/' + article?.slug}
-        ></meta>
-
-        {/* SEO: Twitter */}
-        <meta name="twitter:card" content="summary_large_image"></meta>
-        <meta name="twitter:image" content={article?.thumbnail}></meta>
-        <meta name="twitter:title" content={article?.title}></meta>
-        <meta name="twitter:description" content={article?.description}></meta>
-        <meta name="twitter:site" content="@sammwy"></meta>
-        <meta name="twitter:creator" content="@sammwy"></meta>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/icon.png" />
-      </Head>
+      <NextSeo
+        title={`${article?.title} - ପ(๑•ᴗ•๑)ଓ ♡`}
+        description={article?.description}
+        canonical={getURL() + '/blog/' + article?.slug}
+        twitter={{
+          site: '@sammwy',
+          cardType: 'summary_large_image',
+          handle: '@sammwy',
+        }}
+        openGraph={{
+          type: 'article',
+          url: getURL() + '/blog/' + article?.slug,
+          title: article?.title,
+          description: article?.description,
+          images: [
+            {
+              url: article?.thumbnail,
+              alt: article?.title,
+            },
+          ],
+        }}
+      />
 
       <Flex width={'100%'} justifyContent={'center'} gap={'50px'}>
         {/* Sidebar */}

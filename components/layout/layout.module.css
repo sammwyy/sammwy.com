@@ -4,6 +4,7 @@
   animation: bg-loop 60s linear infinite;
   min-height: 100vh;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 @keyframes bg-loop {

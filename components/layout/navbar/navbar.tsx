@@ -13,6 +13,7 @@ import { IconType } from 'react-icons';
 import {
   FaDiscord,
   FaGithub,
+  FaMastodon,
   FaMoon,
   FaSun,
   FaTwitch,
@@ -20,6 +21,7 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 
+import Section from '@/components/content/section';
 import useScreen from '@/hooks/useScreen';
 
 import styles from './navbar.module.css';
@@ -69,7 +71,7 @@ interface SocialLinkProps {
 
 function SocialLink({ icon: Icon, href, color }: SocialLinkProps) {
   return (
-    <Link href={href} rel={'noopener noreferrer'} target={'_blank'}>
+    <Link href={href} rel={'me noopener noreferrer'} target={'_blank'}>
       <IconButton
         aria-label="Social Link"
         icon={<Icon color={color} />}
@@ -106,7 +108,7 @@ export default function Navbar() {
 
   return (
     <Flex className={styles.navbar} mt={marginTop}>
-      <Flex
+      <Section
         className={styles.content}
         justifyContent={isSmall ? 'center' : 'space-between'}
         bg={bg}
@@ -132,6 +134,11 @@ export default function Navbar() {
               color={'#1DA1F2'}
             />
             <SocialLink
+              href={'https://floss.social/@sammwy'}
+              icon={FaMastodon}
+              color={'#2b90d9'}
+            />
+            <SocialLink
               href={'https://github.com/sammwyy'}
               icon={FaGithub}
               color={'#777'}
@@ -155,7 +162,7 @@ export default function Navbar() {
             <ToggleModeButton />
           </Flex>
         )}
-      </Flex>
+      </Section>
     </Flex>
   );
 }

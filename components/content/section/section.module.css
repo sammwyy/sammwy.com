@@ -1,0 +1,21 @@
+.section {
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  border: 1px solid #fff1;
+}
+
+.trail {
+  background-color: #fff7;
+  border-radius: 25%;
+  height: 5px;
+  position: absolute;
+  offset-path: border-box;
+  offset-anchor: 100% 50%;
+  animation: trail 6s infinite linear;
+}
+
+@keyframes trail {
+  to {
+    offset-distance: 100%;
+  }
+}

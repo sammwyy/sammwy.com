@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
+
       <body>
         <ColorModeScript initialColorMode={'system'} />
         <Main />

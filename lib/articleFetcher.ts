@@ -6,6 +6,10 @@ import fetch from 'node-fetch';
 import Article from './article';
 import { getURL } from './utils';
 
+function mustCache() {
+  return process.env.NODE_ENV === 'production';
+}
+
 class ArticleFetcher {
   private cached: Article[] | null;
   private cachedContent: { [key: string]: string };
@@ -32,16 +36,20 @@ class ArticleFetcher {
       };
     });
 
-    return articles;
+    return articles.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    );
   }
 
   getArticles() {
-    if (this.cached) {
+    if (this.cached && mustCache()) {
       return this.cached;
     }
 
     const articles = this.resolveArticles();
-    this.cached = articles;
+    if (mustCache()) {
+      this.cached = articles;
+    }
     return articles;
   }
 
@@ -52,7 +60,7 @@ class ArticleFetcher {
     );
 
     if (article) {
-      if (this.cachedContent[article.slug]) {
+      if (mustCache() && this.cachedContent[article.slug]) {
         article.content = this.cachedContent[article.slug];
       } else if (article.contentURL) {
         const req = await fetch(article.contentURL);
@@ -70,6 +78,14 @@ class ArticleFetcher {
         this.cachedContent[article.slug] = content;
         article.content = content;
       }
+    }
+
+    while (article.content.includes('{{media:')) {
+      const start = article.content.indexOf('{{media:');
+      const end = article.content.indexOf('}}', start);
+      const media = article.content.slice(start + 8, end);
+      const mediaURL = `/${this.directory}/${article.slug}/media/${media}`;
+      article.content = article.content.replace(`{{media:${media}}}`, mediaURL);
     }
 
     return article || null;
