@@ -1,0 +1,82 @@
+:root {
+    /* ── PALETTE (Dreamy Cold Purple / Violet Tenshi Edition) ── */
+    --bg-page: #f8f2ff;
+    --pink-hot: #c084fc;
+    /* Cold Purple */
+    --pink-mid: #d8b4fe;
+    --pink-soft: #f3e8ff;
+    --pink-pale: #fbf7ff;
+    --pink-pastel: #fdfbff;
+    --lilac: #e9d5ff;
+    /* Soft Violet */
+    --lilac-dark: #a855f7;
+    --lilac-pale: #f5f3ff;
+    --peach: #fff1f2;
+    --cream: #fdfaff;
+    --mint: #f3e8ff;
+    --mint-deep: #d8b4fe;
+    --gold: #fef9c3;
+    --white: #ffffff;
+    --black: #000000;
+    --star-1: #ffffff;
+    --star-2: #f3e8ff;
+
+    /* ── TEXT (Dreamy Readability - Cold Purples) ── */
+    --text-dark: #581c87;
+    /* Deep Purple */
+    --text-mid: #6b21a8;
+    --text-soft: #9333ea;
+    --text-accent: #7c3aed;
+    --text-accent-hot: #8b5cf6;
+    --text-accent-deep: #4c1d95;
+    --text-title: #4c1d95;
+    /* High contrast dark purple for headers */
+    --color-marquee: #6b21a8;
+    --color-btn88: #581c87;
+
+    /* ── GLASS & OVERLAYS ── */
+    --overlay-bg: rgba(248, 242, 255, 0.45);
+    --glass-bg: rgba(255, 255, 255, 0.78);
+    --glass-bg-solid: rgba(255, 255, 255, 0.95);
+    --glass-bg-lite: rgba(255, 255, 255, 0.88);
+    --glass-bg-card: rgba(255, 255, 255, 0.94);
+    --glass-bg-tag: rgba(233, 213, 255, 0.2);
+    --glass-bg-tag-hover: rgba(216, 180, 254, 0.3);
+    --glass-bg-quote: rgba(248, 242, 255, 0.4);
+    --glass-bg-shrine: rgba(255, 255, 255, 0.5);
+    --glass-bg-shrine-hover: rgba(248, 242, 255, 0.6);
+
+    /* ── BORDERS & SHADOWS ── */
+    --border-light: rgba(192, 132, 252, 0.3);
+    --border-medium: rgba(192, 132, 252, 0.45);
+    --shadow-lilac: rgba(233, 213, 255, 0.15);
+    --shadow-pink: rgba(192, 132, 252, 0.15);
+    --shadow-pink-soft: rgba(124, 58, 237, 0.08);
+    --shadow-pink-mid: rgba(124, 58, 237, 0.15);
+    --glow-pink: rgba(192, 132, 252, 0.4);
+    --inset-pink: rgba(255, 255, 255, 0.25);
+
+    /* ── TEXT SHADOWS ── */
+    --t-shadow-light: 0 1px 0 rgba(255, 255, 255, 0.95);
+    --t-shadow-white: 1px 1px 0 rgba(255, 255, 255, 1);
+    --t-shadow-pixel: 1px 1px 0 rgba(255, 255, 255, 1);
+    --t-shadow-deep: 0 1px 2px rgba(255, 255, 255, 0.8);
+
+    /* ── FONTS ── */
+    --font-pixel: 'Press Start 2P', monospace;
+    --font-vt323: 'VT323', monospace;
+    --font-body: 'Nunito', sans-serif;
+
+    /* ── GRADIENTS ── */
+    --grad-marquee: linear-gradient(90deg, #ffffff, #f3e8ff, #e9d5ff, #ffffff);
+    --grad-title: linear-gradient(90deg, #f3e8ff, #d8b4fe, #f3e8ff);
+    /* Violet-Purple Pastel */
+
+    /* ── BORDER UTILS ── */
+    --border-pink: 2px solid var(--pink-hot);
+    --border-lilac: 2px solid var(--lilac);
+    --border-dashed: 2px dashed var(--pink-mid);
+
+    /* ── Assets ── */
+    --bg-image: url('assets/bg_dream.jpg');
+}

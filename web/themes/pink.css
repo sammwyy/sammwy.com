@@ -1,0 +1,80 @@
+:root {
+    /* ── PALETTE (Jirai Lolita) ── */
+    --bg-page: #fff0f5;
+    --pink-hot: #ff6eb4;
+    /* Used for borders/accents */
+    --pink-mid: #ffacd9;
+    --pink-soft: #ffd6ee;
+    --pink-pale: #fff5f7;
+    --pink-pastel: #fffafb;
+    --lilac: #f8d7ff;
+    --lilac-dark: #b07cd8;
+    --lilac-pale: #fdf5ff;
+    --peach: #ffdab9;
+    --cream: #fffaf0;
+    --mint: #f0fff0;
+    --mint-deep: #ccffcc;
+    --gold: #fffacd;
+    --white: #ffffff;
+    --black: #000000;
+    --star-1: #ffffff;
+    --star-2: #ffdae9;
+
+    /* ── TEXT (Jirai/Lolita Contrast) ── */
+    --text-dark: #4a1d34;
+    --text-mid: #732a4e;
+    --text-soft: #9a4d6d;
+    --text-accent: #c70077;
+    --text-accent-hot: #e6008b;
+    --text-accent-deep: #5e033d;
+    --text-title: #4a1d34;
+    /* Dark title for high readability */
+    --color-marquee: #802a4e;
+    --color-btn88: #7d355c;
+
+    /* ── GLASS & OVERLAYS ── */
+    --overlay-bg: rgba(255, 230, 240, 0.4);
+    --glass-bg: rgba(255, 250, 252, 0.78);
+    --glass-bg-solid: rgba(255, 250, 252, 0.95);
+    --glass-bg-lite: rgba(255, 252, 253, 0.92);
+    --glass-bg-card: rgba(255, 254, 255, 0.94);
+    --glass-bg-tag: rgba(255, 180, 220, 0.2);
+    --glass-bg-tag-hover: rgba(255, 150, 200, 0.3);
+    --glass-bg-quote: rgba(255, 240, 250, 0.4);
+    --glass-bg-shrine: rgba(255, 250, 252, 0.5);
+    --glass-bg-shrine-hover: rgba(255, 230, 245, 0.6);
+
+    /* ── BORDERS & SHADOWS ── */
+    --border-light: rgba(255, 110, 180, 0.3);
+    --border-medium: rgba(255, 110, 180, 0.45);
+    --shadow-lilac: rgba(248, 215, 255, 0.2);
+    --shadow-pink: rgba(255, 105, 180, 0.25);
+    --shadow-pink-soft: rgba(230, 0, 139, 0.1);
+    --shadow-pink-mid: rgba(230, 0, 139, 0.2);
+    --glow-pink: rgba(255, 105, 180, 0.5);
+    --inset-pink: rgba(255, 250, 252, 0.25);
+
+    /* ── TEXT SHADOWS ── */
+    --t-shadow-light: 0 1px 0 rgba(255, 255, 255, 0.9);
+    --t-shadow-white: 1px 1px 0 rgba(255, 255, 255, 1);
+    --t-shadow-pixel: 1px 1px 0 rgba(255, 255, 255, 1);
+    --t-shadow-deep: 0 1px 3px rgba(100, 0, 80, 0.4);
+
+    /* ── FONTS ── */
+    --font-pixel: 'Press Start 2P', monospace;
+    --font-vt323: 'VT323', monospace;
+    --font-body: 'Nunito', sans-serif;
+
+    /* ── GRADIENTS ── */
+    --grad-marquee: linear-gradient(90deg, #ffacd9, #f8d7ff, #ffffff, #ffacd9);
+    --grad-title: linear-gradient(90deg, #ffd6ee, #ffacd9, #ffd6ee);
+    /* Pastel Pink */
+
+    /* ── BORDER UTILS ── */
+    --border-pink: 2px solid var(--pink-hot);
+    --border-lilac: 2px solid var(--lilac);
+    --border-dashed: 2px dashed var(--pink-mid);
+
+    /* ── Assets ── */
+    --bg-image: url('assets/bg_pink.jpg');
+}

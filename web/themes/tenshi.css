@@ -1,0 +1,82 @@
+:root {
+    /* ── PALETTE (Tenshi Kawaii) ── */
+    --bg-page: #f0faff;
+    --pink-hot: #80c9ff;
+    /* Border/Accent color slightly deeper for definition */
+    --pink-mid: #cdefff;
+    --pink-soft: #e3f6ff;
+    --pink-pale: #f5fcff;
+    --pink-pastel: #faffff;
+    --lilac: #d1d9ff;
+    --lilac-dark: #91a3ff;
+    --lilac-pale: #f0f2ff;
+    --peach: #fff5e6;
+    --cream: #fffdf5;
+    --mint: #e0ffff;
+    --mint-deep: #b2f5f5;
+    --gold: #fff9c4;
+    --white: #ffffff;
+    --black: #000000;
+    --star-1: #ffffff;
+    --star-2: #e6f7ff;
+
+    /* ── TEXT (Enforced Readability) ── */
+    --text-dark: #2c4a63;
+    /* Dark muted blue-grey */
+    --text-mid: #3d5a73;
+    --text-soft: #5a7d9a;
+    --text-accent: #0077b6;
+    /* Strong primary accent blue */
+    --text-accent-hot: #005f8d;
+    --text-accent-deep: #023e8a;
+    --text-title: #2c4a63;
+    --color-marquee: #2a557a;
+    --color-btn88: #355c7d;
+
+    /* ── GLASS & OVERLAYS (Soft Pastel) ── */
+    --overlay-bg: rgba(255, 255, 255, 0.45);
+    --glass-bg: rgba(255, 255, 255, 0.78);
+    --glass-bg-solid: rgba(255, 255, 255, 0.95);
+    --glass-bg-lite: rgba(255, 255, 255, 0.88);
+    --glass-bg-card: rgba(255, 255, 255, 0.94);
+    --glass-bg-tag: rgba(180, 220, 255, 0.2);
+    --glass-bg-tag-hover: rgba(150, 200, 255, 0.3);
+    --glass-bg-quote: rgba(240, 252, 255, 0.4);
+    --glass-bg-shrine: rgba(255, 255, 255, 0.5);
+    --glass-bg-shrine-hover: rgba(230, 248, 255, 0.6);
+
+    /* ── BORDERS & SHADOWS ── */
+    --border-light: rgba(128, 201, 255, 0.3);
+    --border-medium: rgba(128, 201, 255, 0.45);
+    --shadow-lilac: rgba(145, 163, 255, 0.15);
+    --shadow-pink: rgba(128, 201, 255, 0.2);
+    --shadow-pink-soft: rgba(0, 119, 182, 0.08);
+    /* Darker shadow root for depth */
+    --shadow-pink-mid: rgba(0, 119, 182, 0.15);
+    --glow-pink: rgba(128, 201, 255, 0.4);
+    --inset-pink: rgba(255, 255, 255, 0.25);
+
+    /* ── TEXT SHADOWS ── */
+    --t-shadow-light: 0 1px 0 rgba(255, 255, 255, 0.95);
+    --t-shadow-white: 1px 1px 0 rgba(255, 255, 255, 1);
+    --t-shadow-pixel: 1px 1px 0 rgba(255, 255, 255, 1);
+    --t-shadow-deep: 0 1px 2px rgba(255, 255, 255, 0.8);
+    /* Inverted or lighter for readability on sky bg */
+
+    /* ── FONTS ── */
+    --font-pixel: 'Press Start 2P', monospace;
+    --font-vt323: 'VT323', monospace;
+    --font-body: 'Nunito', sans-serif;
+
+    /* ── GRADIENTS ── */
+    --grad-marquee: linear-gradient(90deg, #ffffff, #e6f7ff, #f0f2ff, #ffffff);
+    --grad-title: linear-gradient(90deg, #d8f3ff, #ace2ff, #d8f3ff);
+
+    /* ── BORDER UTILS ── */
+    --border-pink: 2px solid var(--pink-hot);
+    --border-lilac: 2px solid var(--lilac);
+    --border-dashed: 2px dashed var(--pink-mid);
+
+    /* ── Assets ── */
+    --bg-image: url('assets/bg_tenshi.jpg');
+}
