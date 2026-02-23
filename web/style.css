@@ -238,6 +238,7 @@ body::before {
   background-size: cover;
   background-position: center 25%;
   border: 3px solid var(--pink-hot);
+  border-bottom: none;
   outline: 2px solid var(--lilac);
   outline-offset: 1px;
   border-radius: 6px 6px 0 0;
@@ -276,7 +277,6 @@ body::before {
   width: 100%;
   background: var(--glass-bg);
   border: var(--border-dashed);
-  border-top: none;
   border-radius: 0 0 4px 4px;
   padding: 14px;
   box-shadow:
@@ -955,4 +955,21 @@ a:hover {
   color: var(--text-accent-deep);
   display: block;
   margin-top: 2px;
+}
+
+/* ── BLOG WIDGET CUSTOM ── */
+.blog-item {
+  padding: 4px 6px !important;
+}
+
+.blog-item span {
+  font-size: 0.8rem;
+  flex: 1;
+}
+
+.blog-item .blog-post-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 10px;
 }

@@ -8,6 +8,7 @@ use axum::{
 };
 use clap::Parser;
 use mime_guess::from_path;
+use serde_json;
 use std::{
     collections::{HashMap, HashSet},
     hash::{DefaultHasher, Hash, Hasher},
@@ -45,6 +46,7 @@ struct AppState {
     last_saved_visits: AtomicUsize,
     visited_ips: RwLock<HashSet<u64>>,
     trusted_proxy: bool,
+    custom_strings: RwLock<HashMap<String, String>>,
 }
 
 #[tokio::main]
@@ -59,6 +61,14 @@ async fn main() {
     } else {
         0
     };
+    
+    let custom_file = base_dir.join(".custom");
+    let custom_strings = if custom_file.exists() {
+        let content = fs::read_to_string(&custom_file).await.unwrap_or_default();
+        serde_json::from_str(&content).unwrap_or_default()
+    } else {
+        HashMap::new()
+    };
 
     let state = Arc::new(AppState {
         base_dir: base_dir.clone(),
@@ -67,6 +77,7 @@ async fn main() {
         last_saved_visits: AtomicUsize::new(initial_visits),
         visited_ips: RwLock::new(HashSet::new()),
         trusted_proxy: args.trusted_proxy,
+        custom_strings: RwLock::new(custom_strings),
     });
 
     // Background task to save .visits every 10 seconds if mutated
@@ -97,6 +108,22 @@ async fn main() {
             interval.tick().await;
             let mut ips = state_ips.visited_ips.write().await;
             ips.clear();
+        }
+    });
+
+    // Background task to reload .custom every 10 seconds
+    let state_custom = state.clone();
+    let custom_file_clone = custom_file.clone();
+    tokio::spawn(async move {
+        let mut interval = tokio::time::interval(Duration::from_secs(10));
+        loop {
+            interval.tick().await;
+            if let Ok(content) = fs::read_to_string(&custom_file_clone).await {
+                if let Ok(new_strings) = serde_json::from_str::<HashMap<String, String>>(&content) {
+                    let mut strings = state_custom.custom_strings.write().await;
+                    *strings = new_strings;
+                }
+            }
         }
     });
 
@@ -196,6 +223,14 @@ async fn handle_request(
             // Replaces the placeholder with a zero-padded counter (6 digits) and the raw digit
             let formatted_visits = format!("{:06}", visits);
             text = text.replace("{{visits:counter}}", &formatted_visits);
+
+            // Replaces custom placeholders
+            {
+                let strings = state.custom_strings.read().await;
+                for (key, value) in strings.iter() {
+                    text = text.replace(&format!("{{{{custom:{}}}}}", key), value);
+                }
+            }
             
             response_body = text.into_bytes();
         }

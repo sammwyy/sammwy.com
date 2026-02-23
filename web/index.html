@@ -196,7 +196,26 @@
             </div>
           </div>
 
+          <!-- Idols/Groups  -->
+          <div class="widget">
+            <div class="widget-title">~ L/F JP Idols/Groups</div>
+            <img src="assets/head_babymetal.gif" alt="" class="widget-img" aria-hidden="true" />
+            <div class="widget-body anime-list">
+              <span class="anime-tag">BABYMETAL</span>
+              <span class="anime-tag">BiSH</span>
+              <span class="anime-tag">ZOC</span>
 
+              <span class="anime-tag">ClariS</span>
+              <span class="anime-tag">Maison Book Girl</span>
+
+              <span class="anime-tag">YOASOBI</span>
+              <span class="anime-tag">PassCode</span>
+
+              <span class="anime-tag">Broken By The Scream</span>
+
+              <span class="anime-tag">KAQRIYOTERROR</span>
+            </div>
+          </div>
         </aside>
 
         <!-- Main body -->
@@ -552,6 +571,30 @@
             </div>
           </div>
 
+          <!-- Last game completed -->
+          <div class="widget">
+            <div class="widget-title" style="text-align: center;">Last game completed</div>
+            <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
+              {{custom:last_game}}
+            </div>
+          </div>
+
+          <!-- Last anime watched -->
+          <div class="widget">
+            <div class="widget-title" style="text-align: center;">Last anime watched</div>
+            <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
+              {{custom:last_anime}}
+            </div>
+          </div>
+
+          <!-- Last book/comic read -->
+          <div class="widget">
+            <div class="widget-title" style="text-align: center;">Last book/comic read</div>
+            <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
+              {{custom:last_book}}
+            </div>
+          </div>
+
           <!-- Meme widget -->
           <div class="widget">
             <div class="widget-title">~ mood</div>
@@ -559,6 +602,28 @@
               <img src="assets/howdy.jpg" alt="meme" style="width: 100%; display: block;" />
             </div>
           </div>
+
+          <!-- Blog Widget -->
+          <div class="widget">
+            <div class="widget-title">~ blog (Latest)</div>
+            <div class="widget-body">
+              <div class="social-list" style="text-align: center;">
+                <a href="{{custom:last_post_url}}" target="_blank" class="social-link blog-item">
+                  <span class="blog-post-title">{{custom:last_post_title}}</span>
+                </a>
+                <a href="{{custom:last_post_2_url}}" target="_blank" class="social-link blog-item">
+                  <span class="blog-post-title">{{custom:last_post_2_title}}</span>
+                </a>
+                <a href="{{custom:last_post_3_url}}" target="_blank" class="social-link blog-item">
+                  <span class="blog-post-title">{{custom:last_post_3_title}}</span>
+                </a>
+                <a href="{{custom:blog_url}}" target="_blank" class="social-link blog-item">
+                  <span>View all posts</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
 
           <!-- Hit counter -->
           <div class="widget">
