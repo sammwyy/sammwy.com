@@ -1,9 +1,8 @@
 use axum::{
     body::Body,
-    extract::{Path, State},
+    extract::State,
     http::{header, Request, StatusCode},
     response::{IntoResponse, Response},
-    routing::get,
     Router,
 };
 use clap::Parser;
@@ -47,6 +46,7 @@ struct AppState {
     visited_ips: RwLock<HashSet<u64>>,
     trusted_proxy: bool,
     custom_strings: RwLock<HashMap<String, String>>,
+    layout: RwLock<Option<String>>,
 }
 
 #[tokio::main]
@@ -70,6 +70,13 @@ async fn main() {
         HashMap::new()
     };
 
+    let layout_file = base_dir.join(".layout.html");
+    let initial_layout = if layout_file.exists() {
+        fs::read_to_string(&layout_file).await.ok()
+    } else {
+        None
+    };
+
     let state = Arc::new(AppState {
         base_dir: base_dir.clone(),
         cache: RwLock::new(HashMap::new()),
@@ -78,7 +85,11 @@ async fn main() {
         visited_ips: RwLock::new(HashSet::new()),
         trusted_proxy: args.trusted_proxy,
         custom_strings: RwLock::new(custom_strings),
+        layout: RwLock::new(initial_layout),
     });
+
+    // Initial preloading of all files into RAM
+    preload_files(&state).await;
 
     // Background task to save .visits every 10 seconds if mutated
     let state_clone = state.clone();
@@ -127,6 +138,25 @@ async fn main() {
         }
     });
 
+    // Background task to reload .layout.html every 10 seconds
+    let state_layout = state.clone();
+    let layout_file_clone = layout_file.clone();
+    tokio::spawn(async move {
+        let mut interval = tokio::time::interval(Duration::from_secs(10));
+        loop {
+            interval.tick().await;
+            if let Ok(content) = fs::read_to_string(&layout_file_clone).await {
+                let mut layout = state_layout.layout.write().await;
+                let changed = layout.as_ref() != Some(&content);
+                if changed {
+                    *layout = Some(content);
+                    // Reload all files to apply new layout
+                    preload_files(&state_layout).await;
+                }
+            }
+        }
+    });
+
     let app = Router::new()
         .fallback(handle_request)
         .with_state(state);
@@ -138,85 +168,115 @@ async fn main() {
     axum::serve(listener, app.into_make_service_with_connect_info::<SocketAddr>()).await.unwrap();
 }
 
+async fn preload_files(state: &Arc<AppState>) {
+    let mut stack = vec![state.base_dir.clone()];
+    let mut new_cache = HashMap::new();
+
+    while let Some(dir) = stack.pop() {
+        if let Ok(mut entries) = fs::read_dir(&dir).await {
+            while let Ok(Some(entry)) = entries.next_entry().await {
+                let path = entry.path();
+                if path.is_dir() {
+                    stack.push(path);
+                } else if path.is_file() {
+                    let rel_path = path.strip_prefix(&state.base_dir).unwrap().to_string_lossy().to_string();
+                    let file_path = rel_path.replace("\\", "/");
+                    
+                    if file_path.split('/').any(|s| s.starts_with('.')) && !file_path.ends_with(".layout.html") && !file_path.ends_with(".gallery-template.html") {
+                        continue;
+                    }
+
+                    if let Ok(data) = fs::read(&path).await {
+                        let mut arc_data = Arc::new(data);
+                        let mime_type = from_path(&path).first_or_octet_stream();
+                        let is_html = mime_type.type_() == mime_guess::mime::TEXT && mime_type.subtype() == mime_guess::mime::HTML;
+
+                        if is_html {
+                            let is_template = file_path.split('/').any(|s| s.starts_with('.'));
+                            if !is_template {
+                                if let Ok(text) = String::from_utf8(arc_data.as_ref().clone()) {
+                                    let layout = state.layout.read().await;
+                                    if let Some(layout_text) = layout.as_ref() {
+                                        let assembled = layout_text.replace("{{outlet}}", &text);
+                                        arc_data = Arc::new(assembled.into_bytes());
+                                    }
+                                }
+                            }
+                        }
+
+                        new_cache.insert(file_path, arc_data);
+                    }
+                }
+            }
+        }
+    }
+
+    let mut cache = state.cache.write().await;
+    *cache = new_cache;
+}
+
 async fn handle_request(
     State(state): State<Arc<AppState>>,
     ConnectInfo(addr): ConnectInfo<SocketAddr>,
     req: Request<Body>,
 ) -> Response {
-    let mut path = req.uri().path().to_string();
+    let path = req.uri().path().to_string();
     
-    // Check if it's the index, and update visits counter
-    if path == "/" || path == "/index.html" {
-        path = "/index.html".to_string();
-        
-        let mut client_ip = addr.ip().to_string();
-        if state.trusted_proxy {
-            if let Some(cf_ip) = req.headers().get("CF-Connecting-IP") {
-                if let Ok(ip_str) = cf_ip.to_str() {
-                    client_ip = ip_str.to_string();
-                }
-            } else if let Some(xff) = req.headers().get("X-Forwarded-For") {
-                if let Ok(ip_str) = xff.to_str() {
-                    if let Some(first_ip) = ip_str.split(',').next() {
-                        client_ip = first_ip.trim().to_string();
-                    }
+    // IP logging and visit counting
+    let mut client_ip = addr.ip().to_string();
+    if state.trusted_proxy {
+        if let Some(cf_ip) = req.headers().get("CF-Connecting-IP") {
+            if let Ok(ip_str) = cf_ip.to_str() { client_ip = ip_str.to_string(); }
+        }
+    }
+    let mut hasher = DefaultHasher::new();
+    client_ip.hash(&mut hasher);
+    let ip_hash = hasher.finish();
+    let mut ips = state.visited_ips.write().await;
+    if ips.insert(ip_hash) {
+        state.visits.fetch_add(1, Ordering::SeqCst);
+    }
+
+    let mut file_path = path.trim_start_matches('/').to_string();
+
+    // Handle root path and directory requests for index.html
+    if file_path.is_empty() || file_path.ends_with('/') {
+        file_path = format!("{}index.html", file_path);
+    }
+
+    // Clean URL logic: if /gallery is requested, try gallery.html
+    {
+        let cache = state.cache.read().await;
+        if !cache.contains_key(&file_path) {
+            if !file_path.contains('.') {
+                let html_path = format!("{}.html", file_path);
+                if cache.contains_key(&html_path) {
+                    file_path = html_path;
                 }
             }
         }
-        
-        let mut hasher = DefaultHasher::new();
-        client_ip.hash(&mut hasher);
-        let ip_hash = hasher.finish();
-
-        let mut ips = state.visited_ips.write().await;
-        if ips.insert(ip_hash) {
-            state.visits.fetch_add(1, Ordering::SeqCst);
-        }
-    } else if path.ends_with('/') {
-        path.push_str("index.html");
     }
 
     // Do not serve any files starting with `.`
-    if path.split('/').any(|segment| segment.starts_with('.')) {
+    if file_path.split('/').any(|segment| segment.starts_with('.')) {
         return (StatusCode::FORBIDDEN, "Forbidden").into_response();
     }
 
-    let file_path = path.trim_start_matches('/');
-    let full_path = state.base_dir.join(file_path);
-
-    // Prevent directory traversal
-    if !full_path.starts_with(&state.base_dir) {
-        return (StatusCode::FORBIDDEN, "Forbidden").into_response();
-    }
-
-    let file_content = {
-        let cache = state.cache.read().await;
-        cache.get(file_path).cloned()
-    };
-
-    let content = match file_content {
+    let cache = state.cache.read().await;
+    let content = match cache.get(&file_path) {
         Some(c) => c,
         None => {
-            // Not in RAM cache, read from HDD
-            match fs::read(&full_path).await {
-                Ok(data) => {
-                    let arc_data = Arc::new(data);
-                    let mut cache = state.cache.write().await;
-                    cache.insert(file_path.to_string(), arc_data.clone());
-                    arc_data
-                }
-                Err(_) => {
-                    return (StatusCode::NOT_FOUND, "Not Found").into_response();
-                }
-            }
+            return (StatusCode::NOT_FOUND, "Not Found").into_response();
         }
     };
 
-    let mime_type = from_path(&full_path).first_or_octet_stream();
+    let mime_type = from_path(&file_path).first_or_octet_stream();
+    let is_html = mime_type.type_() == mime_guess::mime::TEXT && mime_type.subtype() == mime_guess::mime::HTML;
+
     let mut response_body = content.as_ref().clone();
 
     // Hydration replacing logic for HTML
-    if mime_type.type_() == mime_guess::mime::TEXT && mime_type.subtype() == mime_guess::mime::HTML {
+    if is_html {
         if let Ok(mut text) = String::from_utf8(response_body.clone()) {
             let visits = state.visits.load(Ordering::SeqCst);
             
@@ -229,6 +289,38 @@ async fn handle_request(
                 let strings = state.custom_strings.read().await;
                 for (key, value) in strings.iter() {
                     text = text.replace(&format!("{{{{custom:{}}}}}", key), value);
+                }
+            }
+
+            // Gallery logic
+            if text.contains("{{gallery}}") || text.contains("{{gallery:count}}") {
+                let template_key = "gallery/.gallery-template.html";
+                
+                if let Some(template_data) = cache.get(template_key) {
+                    if let Ok(template) = String::from_utf8(template_data.as_ref().clone()) {
+                        let mut gallery_items = Vec::new();
+                        let mut count = 0;
+                        
+                        let mut sorted_keys: Vec<_> = cache.keys().collect();
+                        sorted_keys.sort();
+
+                        for key in sorted_keys {
+                            if key.starts_with("gallery/") && !key.contains("/.") {
+                                let ext = key.split('.').last().unwrap_or("").to_lowercase();
+                                if ["jpg", "jpeg", "png", "webp", "gif"].contains(&ext.as_str()) {
+                                    count += 1;
+                                    let filename = key.split('/').last().unwrap_or(key);
+                                    let mut item = template.clone();
+                                    item = item.replace("{filepath}", &format!("/{}", key));
+                                    item = item.replace("{filename}", filename);
+                                    gallery_items.push(item);
+                                }
+                            }
+                        }
+                        
+                        text = text.replace("{{gallery}}", &gallery_items.join("\n"));
+                        text = text.replace("{{gallery:count}}", &count.to_string());
+                    }
                 }
             }
             

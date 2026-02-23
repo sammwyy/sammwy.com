@@ -1,679 +1,581 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✦ Sammwy's Place ✦</title>
-  <meta name="description" content="sammwy's place ~ swe · pentesting · malware · engineering" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Nunito:wght@400;700;900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="themes/dream.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-
-  <!-- Floating decorative elements -->
-  <div class="stars-bg" aria-hidden="true">
-    <span class="star s1">✦</span>
-    <span class="star s2">★</span>
-    <span class="star s3">✧</span>
-    <span class="star s4">✦</span>
-    <span class="star s5">★</span>
-    <span class="star s6">✧</span>
-    <span class="star s7">✦</span>
-    <span class="star s8">✿</span>
-    <span class="star s9">❀</span>
-    <span class="star s10">✦</span>
-    <span class="star s11">★</span>
-    <span class="star s12">✧</span>
-  </div>
-
-  <!-- Marquee band -->
-  <div class="marquee-band" role="marquee" aria-label="decorative text">
-    <span>✧ この さいと の ないよう に よって しょうじる あんしん・ふあん・どきどき・むいみ な きょうふ・または きゃらめる まきあーと を のみたく なる しょうどう は すべて じこ せきにん で おねがい します
-      ✧ この さいと の ないよう に よって しょうじる あんしん・ふあん・どきどき・むいみ な きょうふ・または きゃらめる まきあーと を のみたく なる しょうどう は すべて じこ せきにん で おねがい します
-      ✧ この さいと の ないよう に よって しょうじる あんしん・ふあん・どきどき・むいみ な きょうふ・または きゃらめる まきあーと を のみたく なる しょうどう は すべて じこ せきにん で おねがい します
-      ✧</span>
-  </div>
-
-  <!-- Main page wrapper -->
-  <main class="page-wrapper">
-
-    <div class="site-container">
-
-      <!-- ── HEADER BANNER ── -->
-      <header class="site-header" role="banner">
-        <div class="header-name-overlay">
-          <h1 class="header-name">Sammwy</h1>
-        </div>
-      </header>
-      <!-- ── END HEADER ── -->
-
-
-      <!-- ── CONTENT CONTAINER ── -->
-      <section class="content-container" aria-label="Main content">
-
-        <!-- Left column -->
-        <aside class="sidebar" aria-label="Sidebar">
-
-          <!-- About Me -->
-          <div class="widget">
-            <div class="widget-title">~ about me</div>
-            <img src="https://avatars.githubusercontent.com/u/44925968?v=4" alt="" class="widget-img"
-              aria-hidden="true" />
-            <div class="widget-body">
-              <p class="profile-name">Sammwy</p>
-              <table class="info-table">
-                <tr>
-                  <td class="info-key">Age</td>
-                  <td>24</td>
-                </tr>
-                <tr>
-                  <td class="info-key">Country</td>
-                  <td>Argentina</td>
-                </tr>
-                <tr>
-                  <td class="info-key">Pronouns</td>
-                  <td>Any you want</td>
-                </tr>
-                <tr>
-                  <td class="info-key">Personality</td>
-                  <td>INTJ</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-
-          <!-- Anime list -->
-          <div class="widget">
-            <div class="widget-title">~ L/F Anime</div>
-            <img src="assets/head_madoka.gif" alt="" class="widget-img" aria-hidden="true" />
-            <div class="widget-body anime-list">
-              <span class="anime-tag">Ranma</span>
-              <span class="anime-tag">Nichijou</span>
-              <span class="anime-tag">Elfen Lied</span>
-
-              <span class="anime-tag">Serial Experiments Lain</span>
-              <span class="anime-tag">FMA</span>
-
-              <span class="anime-tag">ERASED</span>
-              <span class="anime-tag">ONIMAI</span>
-              <span class="anime-tag">Naruto</span>
-
-              <span class="anime-tag">Overlord</span>
-              <span class="anime-tag">Card Captor Sakura</span>
-
-              <span class="anime-tag">Madoka Magica</span>
-              <span class="anime-tag">Toradora!</span>
-
-              <span class="anime-tag">Mirai Nikki</span>
-              <span class="anime-tag">NG: Evangelion</span>
-            </div>
-          </div>
-
-          <!-- Games list -->
-          <div class="widget">
-            <div class="widget-title">~ L/F Games</div>
-            <img src="assets/head_ngo.gif" alt="" class="widget-img" aria-hidden="true" />
-            <div class="widget-body anime-list">
-              <span class="anime-tag">IWKTG</span>
-              <span class="anime-tag">Worms</span>
-              <span class="anime-tag">Minecraft</span>
-
-              <span class="anime-tag">Needy Girl Overdose</span>
-              <span class="anime-tag">Touhou</span>
-
-              <span class="anime-tag">Mega Man 3</span>
-              <span class="anime-tag">Resident Evil 4</span>
-
-              <span class="anime-tag">Age of Empires</span>
-              <span class="anime-tag">VVVVVV</span>
-
-              <span class="anime-tag">Undertale</span>
-              <span class="anime-tag">Melty Blood</span>
-
-              <span class="anime-tag">CS2</span>
-              <span class="anime-tag">SMW</span>
-              <span class="anime-tag">SMB3</span>
-            </div>
-          </div>
-
-          <!-- Visual Novels list -->
-          <div class="widget">
-            <div class="widget-title">~ L/F Visual Novels</div>
-            <img src="assets/head_saya.webp" alt="" class="widget-img" aria-hidden="true" />
-            <div class="widget-body anime-list">
-              <span class="anime-tag">Dramatical Murder</span>
-              <span class="anime-tag">Higurashi</span>
-
-              <span class="anime-tag">Slow Damage</span>
-              <span class="anime-tag">Saya no Uta</span>
-
-              <span class="anime-tag">Nekopara</span>
-              <span class="anime-tag">DDLC</span>
-              <span class="anime-tag">Totono</span>
-
-              <span class="anime-tag">CLANNAD</span>
-              <span class="anime-tag">Supipara</span>
-              <span class="anime-tag">SubaHibi</span>
-            </div>
-          </div>
-
-          <!-- Music -->
-          <div class="widget">
-            <div class="widget-title">~ L/F Artists/Genres</div>
-            <img src="assets/head_rin.gif" alt="" class="widget-img" aria-hidden="true" />
-            <div class="widget-body anime-list">
-              <span class="anime-tag">Sewerslvt</span>
-              <span class="anime-tag">usedcvnt</span>
-              <span class="anime-tag">S3RL</span>
-
-              <span class="anime-tag">AgonyOST</span>
-              <span class="anime-tag">Nightcore</span>
-              <span class="anime-tag">Boa</span>
-
-              <span class="anime-tag">Lady Gaga</span>
-              <span class="anime-tag">Twenty One Pilots</span>
-
-              <span class="anime-tag">hkmori</span>
-              <span class="anime-tag">And One</span>
-              <span class="anime-tag">Skrillex</span>
-
-              <span class="anime-tag">Shakira</span>
-              <span class="anime-tag">Rihanna</span>
-              <span class="anime-tag">Gorillaz</span>
-
-              <span class="anime-tag">Arctic Monkeys</span>
-              <span class="anime-tag">Femtanyl</span>
-
-              <span class="anime-tag">Vocaloid</span>
-              <span class="anime-tag">Inabakumori</span>
-            </div>
-          </div>
-
-          <!-- Idols/Groups  -->
-          <div class="widget">
-            <div class="widget-title">~ L/F JP Idols/Groups</div>
-            <img src="assets/head_babymetal.gif" alt="" class="widget-img" aria-hidden="true" />
-            <div class="widget-body anime-list">
-              <span class="anime-tag">BABYMETAL</span>
-              <span class="anime-tag">BiSH</span>
-              <span class="anime-tag">ZOC</span>
-
-              <span class="anime-tag">ClariS</span>
-              <span class="anime-tag">Maison Book Girl</span>
-
-              <span class="anime-tag">YOASOBI</span>
-              <span class="anime-tag">PassCode</span>
-
-              <span class="anime-tag">Broken By The Scream</span>
-
-              <span class="anime-tag">KAQRIYOTERROR</span>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Main body -->
-        <article class="main-content" aria-label="Main article">
-
-          <div class="post-card">
-            <div class="post-header">
-              <span class="post-date">Last update: 21.02.2026</span>
-              <h2 class="post-title">~ introduction / about me ~</h2>
-            </div>
-            <div class="post-body">
-              <p>
-                hey, i'm sammwy. i work in <strong>cybersecurity</strong>,
-                <strong>malware research</strong> and <strong>reverse engineering</strong>.
-                also building <strong>full-stack systems</strong> and lately experimenting
-                with <strong>AI agents</strong>.
-                self-taught. learned the hard way.
-              </p>
-
-              <p>
-                outside of that: <strong>anime</strong>, <strong>y2k internet</strong>,
-                breakcore, retro 8/16-bit games.
-                aesthetics rotate between <strong>jirai kei</strong>, cottagecore,
-                cyber pop, <strong>yami kawaii</strong>, lolita, <strong>visual kei</strong>,
-                <strong>tenshi kaiwai</strong>, menhera, kogal, goth,
-                scene, grunge and <strong>pastel goth</strong> in the mix.
-              </p>
-
-              <p>
-                food-wise: <strong>pasta</strong> (canelones & ravioles especially),
-                <strong>caramel macchiato</strong> from starbucks,
-                and mascarpone or <strong>mint ice cream</strong>.
-                minimalism enjoyer.
-              </p>
-
-              <img src="assets/hi.webp" alt="welcome"
-                style="width: 100%; margin: 10px auto 0; display: block; border-radius: 4px;" />
-            </div>
-
-
-            <div class="post-footer">
-              <span class="post-tag">cybersecurity</span>
-              <span class="post-tag">malware</span>
-              <span class="post-tag">fullstack</span>
-              <span class="post-tag">anime</span>
-              <span class="post-tag">y2k</span>
-              <span class="post-tag">jirai kei</span>
-              <span class="post-tag">yami</span>
-              <span class="post-tag">visual kei</span>
-              <span class="post-tag">tenshi kawaii</span>
-            </div>
-          </div>
-
-          <div class="post-card">
-            <div class="post-header">
-              <span class="post-date">Last update: 28.06.2024</span>
-              <h2 class="post-title">~ latest clients ~</h2>
-            </div>
-            <div class="post-body">
-              <div class="clients-grid">
-                <a href="https://x.com/eufoniastudio" target="_blank" class="client-mini-card">
-                  <span class="client-name">Eufonia Studio</span>
-                  <span class="client-category">Company</span>
-                  <span class="client-comment">Minecraft modding.</span>
-                </a>
-
-                <a href="https://twitch.tv/rubius" target="_blank" class="client-mini-card">
-                  <span class="client-name">Rubius</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations &amp; modding.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/robleis" target="_blank" class="client-mini-card">
-                  <span class="client-name">Robleis</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations &amp; modding.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/carreraaa" target="_blank" class="client-mini-card">
-                  <span class="client-name">Carreraaa</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/xcry" target="_blank" class="client-mini-card">
-                  <span class="client-name">Cry</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations &amp; modding.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/staryuuki" target="_blank" class="client-mini-card">
-                  <span class="client-name">Staryuuki</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/elspreen" target="_blank" class="client-mini-card">
-                  <span class="client-name">Spreen</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/farfadoxvevo" target="_blank" class="client-mini-card">
-                  <span class="client-name">Farfadox</span>
-                  <span class="client-category">YouTuber/Streamer</span>
-                  <span class="client-comment">Software development.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/lexosi" target="_blank" class="client-mini-card">
-                  <span class="client-name">Lexosi</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/soarinng" target="_blank" class="client-mini-card">
-                  <span class="client-name">Soarinng</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Minecraft modding.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/alexby11" target="_blank" class="client-mini-card">
-                  <span class="client-name">Alexby11</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Game server management.</span>
-                </a>
-
-                <a href="https://www.youtube.com/c/pipepino" target="_blank" class="client-mini-card">
-                  <span class="client-name">Pipepino</span>
-                  <span class="client-category">YouTuber</span>
-                  <span class="client-comment">Website development.</span>
-                </a>
-
-                <a href="https://www.youtube.com/@Jota." target="_blank" class="client-mini-card">
-                  <span class="client-name">Jota</span>
-                  <span class="client-category">YouTuber</span>
-                  <span class="client-comment">Website development.</span>
-                </a>
-
-                <a href="https://www.twitch.tv/fapparamoar" target="_blank" class="client-mini-card">
-                  <span class="client-name">FapParaMoar</span>
-                  <span class="client-category">Streamer</span>
-                  <span class="client-comment">Twitch integrations.</span>
-                </a>
-              </div>
-
-              <img src="assets/heyo.webp" alt="welcome"
-                style="width: 100%; margin: 10px auto 0; display: block; border-radius: 4px;" />
-            </div>
-          </div>
-
-          <div class="post-card">
-            <div class="post-header">
-              <span class="post-date">Last update: 21.02.2026</span>
-              <h2 class="post-title">~ tech stack ~</h2>
-            </div>
-            <div class="post-body stack-body">
-
-              <div class="stack-group">
-                <span class="stack-label">languages</span>
-                <div class="stack-list">
-                  <span class="anime-tag">Bash</span>
-                  <span class="anime-tag">C#</span>
-                  <span class="anime-tag">CSS</span>
-                  <span class="anime-tag">Go</span>
-                  <span class="anime-tag">HTML</span>
-                  <span class="anime-tag">Java</span>
-                  <span class="anime-tag">JavaScript</span>
-                  <span class="anime-tag">Python</span>
-                  <span class="anime-tag">Rust</span>
-                  <span class="anime-tag">Sass</span>
-                  <span class="anime-tag">SQL</span>
-                  <span class="anime-tag">TypeScript</span>
-                </div>
-              </div>
-
-              <div class="stack-group">
-                <span class="stack-label">frameworks &amp; libs</span>
-                <div class="stack-list">
-                  <span class="anime-tag">Apollo</span>
-                  <span class="anime-tag">Bootstrap</span>
-                  <span class="anime-tag">Bun</span>
-                  <span class="anime-tag">ChakraUI</span>
-                  <span class="anime-tag">.NET</span>
-                  <span class="anime-tag">Electron</span>
-                  <span class="anime-tag">Express</span>
-                  <span class="anime-tag">GitHub Actions</span>
-                  <span class="anime-tag">GraphQL</span>
-                  <span class="anime-tag">Hono</span>
-                  <span class="anime-tag">JWT</span>
-                  <span class="anime-tag">NestJS</span>
-                  <span class="anime-tag">NextJS</span>
-                  <span class="anime-tag">Passport</span>
-                  <span class="anime-tag">React</span>
-                  <span class="anime-tag">Socket.IO</span>
-                  <span class="anime-tag">TailwindCSS</span>
-                  <span class="anime-tag">Tauri</span>
-                  <span class="anime-tag">Unity</span>
-                  <span class="anime-tag">Vite</span>
-                </div>
-              </div>
-
-              <div class="stack-group">
-                <span class="stack-label">tools</span>
-                <div class="stack-list">
-                  <span class="anime-tag">Apache</span>
-                  <span class="anime-tag">Debian</span>
-                  <span class="anime-tag">Docker</span>
-                  <span class="anime-tag">Git</span>
-                  <span class="anime-tag">Gradle</span>
-                  <span class="anime-tag">Jenkins</span>
-                  <span class="anime-tag">Maven</span>
-                  <span class="anime-tag">Nginx</span>
-                  <span class="anime-tag">OBS</span>
-                  <span class="anime-tag">Ubuntu</span>
-                  <span class="anime-tag">VSCode</span>
-                </div>
-              </div>
-
-              <div class="stack-group">
-                <span class="stack-label">cloud &amp; infra</span>
-                <div class="stack-list">
-                  <span class="anime-tag">AWS</span>
-                  <span class="anime-tag">Cloudflare</span>
-                  <span class="anime-tag">CF Workers</span>
-                  <span class="anime-tag">GitHub</span>
-                  <span class="anime-tag">MariaDB</span>
-                  <span class="anime-tag">MongoDB</span>
-                  <span class="anime-tag">MySQL</span>
-                  <span class="anime-tag">OVH</span>
-                  <span class="anime-tag">Railway</span>
-                  <span class="anime-tag">Redis</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="post-card">
-            <div class="post-header">
-              <span class="post-date">Last update: 21.02.2026</span>
-              <h2 class="post-title">~ side projects ~</h2>
-            </div>
-            <div class="post-body">
-              <ul class="project-list">
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/teragen"
-                    target="_blank">Teragen</a> — Terminal-based AI programming agent written in Go.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/minusbot-org/minusbot"
-                    target="_blank">MinusBot</a> — Powerful, secure, modular personal AI agent.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/inkshelf"
-                    target="_blank">Inkshelf</a> — Self-hosted manga/manhwa/manhua/comics server and reader.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/MikuMikuBeam"
-                    target="_blank">MikuMikuBeam</a> — Open-source network stresser but it's Hatsune Miku.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/cosmisum"
-                    target="_blank">Cosmisum</a> — Python pipeline for analyzing manga, comics and documents.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Tasel" target="_blank">Tasel</a>
-                  — Git hooks manager with built-in commit-lint.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/NRelay"
-                    target="_blank">NRelay</a> — Self-hosted OOB reverse tunnel (TCP/UDP/SNI/HTTP/MC).</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/tsk" target="_blank">TSK</a> —
-                  Fast command-line process manager written in Rust.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/specter"
-                    target="_blank">Specter</a> — MiTM proxy for app networking analysis.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/BLEeding"
-                    target="_blank">BLEeding</a> — Bluetooth/BLE jamming, DoS and DeAuth attack tool.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/StoryMaker"
-                    target="_blank">StoryMaker</a> — Browser-based image editor for Instagram stories.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/ARCX" target="_blank">ARCX</a>
-                  — Structured daemon manager for Linux user space written in Go.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/spear" target="_blank">Spear</a>
-                  — Modular and extensible NIDS/HIDS intrusion detection system.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/listnr"
-                    target="_blank">Listnr</a> — TUI/Terminal interactive music player.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/HotRouter"
-                    target="_blank">HotRouter</a> — Dynamic HTTP reverse proxy with runtime config management.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/runtainer"
-                    target="_blank">Runtainer</a> — Container orchestrator for multiple dev environment runtimes.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/yfs" target="_blank">YFS</a> —
-                  Vertical filesystem in Go using indexes, bitmaps and block storage.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/ccw" target="_blank">CCW</a> —
-                  Container worker with REST API and WS for FS ops and shell exec.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/MiniLaunch"
-                    target="_blank">MiniLaunch</a> — Simple minimalist launcher for Minecraft.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/gdbc" target="_blank">GDBC</a>
-                  — Terminal GDB client in Rust for remote debugging operations.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/PokExPy"
-                    target="_blank">PokExPy</a> — Pokemon game resource extractor in Python.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/memdrop"
-                    target="_blank">memdrop</a> — In-memory PE loader and executor.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Dishost"
-                    target="_blank">Dishost</a> — IP range scanner with configurable health checks.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Lake" target="_blank">Lake</a>
-                  — Universal build system with Lua scripting.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/SpearCopy"
-                    target="_blank">SpearCopy</a> — Universal local phishing toolkit for audit purposes.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/NoVM" target="_blank">NoVM</a>
-                  — Tool to hide virtual machines from malicious actors.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/ruster"
-                    target="_blank">Ruster</a> — Directory buster tool built in Rust.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/SQLand"
-                    target="_blank">SQLand</a> — Automated SQL injection vulnerability detection.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/OSKD" target="_blank">OSKD</a>
-                  — On-screen keyboard display for coding streams.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/piducky"
-                    target="_blank">PiDucky</a> — RubberDucky script interpreter for Raspberry Pi via USBHID.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/usbhid"
-                    target="_blank">USBHID</a> — Rust library for the USB HID protocol.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Lure" target="_blank">Lure</a>
-                  — Next-gen L7 Minecraft proxy and load balancer built in Rust.</li>
-                <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/mindns"
-                    target="_blank">MinDNS</a> — Minimal DNS server in Rust with rule system and logging.</li>
-              </ul>
-            </div>
-            <div class="post-footer">
-              <span class="post-tag">projects</span>
-              <span class="post-tag">open source</span>
-              <span class="post-tag">rust</span>
-              <span class="post-tag">go</span>
-              <span class="post-tag">security</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Right column -->
-        <aside class="sidebar sidebar--right" aria-label="Right sidebar">
-
-          <!-- Links / Socials -->
-          <div class="widget">
-            <div class="widget-title">~ socials</div>
-            <img src="assets/neko.jpg" alt="" style="width: 100%;" aria-hidden="true" />
-            <div class="widget-body">
-              <div class="social-list">
-                <a href="https://github.com/sammwyy" target="_blank" class="social-link">
-                  <strong>GitHub</strong> <span>sammwyy</span>
-                </a>
-                <a href="https://twitter.com/sammwy" target="_blank" class="social-link">
-                  <strong>Twitter</strong> <span>@sammwy</span>
-                </a>
-                <a href="https://twitch.tv/sammwy" target="_blank" class="social-link">
-                  <strong>Twitch</strong> <span>sammwy</span>
-                </a>
-                <a href="https://youtube.com/c/sammwy" target="_blank" class="social-link">
-                  <strong>YouTube</strong> <span>sammwy</span>
-                </a>
-                <a href="https://anilist.co/user/sammwy/" target="_blank" class="social-link">
-                  <strong>AniList</strong> <span>sammwy</span>
-                </a>
-                <div class="social-link" style="flex-direction: column; align-items: flex-start; cursor: default;">
-                  <div style="display: flex; justify-content: space-between; width: 100%;"><strong>Steam</strong>
-                    <span>sammwy</span>
-                  </div>
-                  <span class="social-note">(Don't add me as friend please)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Last game completed -->
-          <div class="widget">
-            <div class="widget-title" style="text-align: center;">Last game completed</div>
-            <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
-              {{custom:last_game}}
-            </div>
-          </div>
-
-          <!-- Last anime watched -->
-          <div class="widget">
-            <div class="widget-title" style="text-align: center;">Last anime watched</div>
-            <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
-              {{custom:last_anime}}
-            </div>
-          </div>
-
-          <!-- Last book/comic read -->
-          <div class="widget">
-            <div class="widget-title" style="text-align: center;">Last book/comic read</div>
-            <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
-              {{custom:last_book}}
-            </div>
-          </div>
-
-          <!-- Meme widget -->
-          <div class="widget">
-            <div class="widget-title">~ mood</div>
-            <div class="widget-body" style="padding: 0; background: #000;">
-              <img src="assets/howdy.jpg" alt="meme" style="width: 100%; display: block;" />
-            </div>
-          </div>
-
-          <!-- Blog Widget -->
-          <div class="widget">
-            <div class="widget-title">~ blog (Latest)</div>
-            <div class="widget-body">
-              <div class="social-list" style="text-align: center;">
-                <a href="{{custom:last_post_url}}" target="_blank" class="social-link blog-item">
-                  <span class="blog-post-title">{{custom:last_post_title}}</span>
-                </a>
-                <a href="{{custom:last_post_2_url}}" target="_blank" class="social-link blog-item">
-                  <span class="blog-post-title">{{custom:last_post_2_title}}</span>
-                </a>
-                <a href="{{custom:last_post_3_url}}" target="_blank" class="social-link blog-item">
-                  <span class="blog-post-title">{{custom:last_post_3_title}}</span>
-                </a>
-                <a href="{{custom:blog_url}}" target="_blank" class="social-link blog-item">
-                  <span>View all posts</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Hit counter -->
-          <div class="widget">
-            <div class="widget-title">~ hits</div>
-            <div class="widget-body hits-body">
-              <div class="hit-counter">{{visits:counter}}</div>
-              <p class="hit-label">visitors ♥</p>
-            </div>
-          </div>
-
-        </aside>
-
-      </section>
-      <!-- ── END CONTENT ── -->
-
-      <!-- Footer -->
-      <footer class="site-footer" role="contentinfo">
-        <div class="crypto-donations">
-          <div class="crypto-title">~ Support me</div>
-          <div class="crypto-list">
-            <div class="crypto-item">
-              <div class="crypto-meta">
-                <span class="crypto-coin">BTC</span>
-                <span class="crypto-network">Bitcoin</span>
-              </div>
-              <span class="crypto-address">bc1q4uzvtx6nsgt7pt7678p9rqel4hkhskpxvck8uq</span>
-            </div>
-            <div class="crypto-item">
-              <div class="crypto-meta">
-                <span class="crypto-coin">ETH/BSC</span>
-                <span class="crypto-network">Ethereum/Smart Chain</span>
-              </div>
-              <span class="crypto-address">0x7a70a0C1889A9956460c3c9DCa8169F25Bb098af</span>
-            </div>
-            <div class="crypto-item">
-              <div class="crypto-meta">
-                <span class="crypto-coin">SOL</span>
-                <span class="crypto-network">Solana</span>
-              </div>
-              <span class="crypto-address">7UcE4PzrHoGqFKHyVgsme6CdRSECCZAoWipsHntu5rZx</span>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+<!-- ── CONTENT CONTAINER ── -->
+<section class="content-container" aria-label="Main content">
+
+  <!-- Left column -->
+  <aside class="sidebar" aria-label="Sidebar">
+
+    <!-- About Me -->
+    <div class="widget">
+      <div class="widget-title">~ about me</div>
+      <img src="https://avatars.githubusercontent.com/u/44925968?v=4" alt="" class="widget-img" aria-hidden="true" />
+      <div class="widget-body">
+        <p class="profile-name">Sammwy</p>
+        <table class="info-table">
+          <tr>
+            <td class="info-key">Age</td>
+            <td>24</td>
+          </tr>
+          <tr>
+            <td class="info-key">Country</td>
+            <td>Argentina</td>
+          </tr>
+          <tr>
+            <td class="info-key">Pronouns</td>
+            <td>Any you want</td>
+          </tr>
+          <tr>
+            <td class="info-key">Personality</td>
+            <td>INTJ</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <!-- end .site-container -->
 
-  </main>
+    <!-- Anime list -->
+    <div class="widget">
+      <div class="widget-title">~ L/F Anime</div>
+      <img src="assets/head_madoka.gif" alt="" class="widget-img" aria-hidden="true" />
+      <div class="widget-body anime-list">
+        <span class="anime-tag">Ranma</span>
+        <span class="anime-tag">Nichijou</span>
+        <span class="anime-tag">Elfen Lied</span>
 
-</body>
+        <span class="anime-tag">Serial Experiments Lain</span>
+        <span class="anime-tag">FMA</span>
 
-</html>
+        <span class="anime-tag">ERASED</span>
+        <span class="anime-tag">ONIMAI</span>
+        <span class="anime-tag">Naruto</span>
+
+        <span class="anime-tag">Overlord</span>
+        <span class="anime-tag">Card Captor Sakura</span>
+
+        <span class="anime-tag">Madoka Magica</span>
+        <span class="anime-tag">Toradora!</span>
+
+        <span class="anime-tag">Mirai Nikki</span>
+        <span class="anime-tag">NG: Evangelion</span>
+      </div>
+    </div>
+
+    <!-- Games list -->
+    <div class="widget">
+      <div class="widget-title">~ L/F Games</div>
+      <img src="assets/head_ngo.gif" alt="" class="widget-img" aria-hidden="true" />
+      <div class="widget-body anime-list">
+        <span class="anime-tag">IWKTG</span>
+        <span class="anime-tag">Worms</span>
+        <span class="anime-tag">Minecraft</span>
+
+        <span class="anime-tag">Needy Girl Overdose</span>
+        <span class="anime-tag">Touhou</span>
+
+        <span class="anime-tag">Mega Man 3</span>
+        <span class="anime-tag">Resident Evil 4</span>
+
+        <span class="anime-tag">Age of Empires</span>
+        <span class="anime-tag">VVVVVV</span>
+
+        <span class="anime-tag">Undertale</span>
+        <span class="anime-tag">Melty Blood</span>
+
+        <span class="anime-tag">CS2</span>
+        <span class="anime-tag">SMW</span>
+        <span class="anime-tag">SMB3</span>
+      </div>
+    </div>
+
+    <!-- Visual Novels list -->
+    <div class="widget">
+      <div class="widget-title">~ L/F Visual Novels</div>
+      <img src="assets/head_saya.webp" alt="" class="widget-img" aria-hidden="true" />
+      <div class="widget-body anime-list">
+        <span class="anime-tag">Dramatical Murder</span>
+        <span class="anime-tag">Higurashi</span>
+
+        <span class="anime-tag">Slow Damage</span>
+        <span class="anime-tag">Saya no Uta</span>
+
+        <span class="anime-tag">Nekopara</span>
+        <span class="anime-tag">DDLC</span>
+        <span class="anime-tag">Totono</span>
+
+        <span class="anime-tag">CLANNAD</span>
+        <span class="anime-tag">Supipara</span>
+        <span class="anime-tag">SubaHibi</span>
+      </div>
+    </div>
+
+    <!-- Music -->
+    <div class="widget">
+      <div class="widget-title">~ L/F Artists/Genres</div>
+      <img src="assets/head_rin.gif" alt="" class="widget-img" aria-hidden="true" />
+      <div class="widget-body anime-list">
+        <span class="anime-tag">Sewerslvt</span>
+        <span class="anime-tag">usedcvnt</span>
+        <span class="anime-tag">S3RL</span>
+
+        <span class="anime-tag">AgonyOST</span>
+        <span class="anime-tag">Nightcore</span>
+        <span class="anime-tag">Boa</span>
+
+        <span class="anime-tag">Lady Gaga</span>
+        <span class="anime-tag">Twenty One Pilots</span>
+
+        <span class="anime-tag">hkmori</span>
+        <span class="anime-tag">And One</span>
+        <span class="anime-tag">Skrillex</span>
+
+        <span class="anime-tag">Shakira</span>
+        <span class="anime-tag">Rihanna</span>
+        <span class="anime-tag">Gorillaz</span>
+
+        <span class="anime-tag">Arctic Monkeys</span>
+        <span class="anime-tag">Femtanyl</span>
+
+        <span class="anime-tag">Vocaloid</span>
+        <span class="anime-tag">Inabakumori</span>
+      </div>
+    </div>
+
+    <!-- Idols/Groups  -->
+    <div class="widget">
+      <div class="widget-title">~ L/F JP Idols/Groups</div>
+      <img src="assets/head_babymetal.gif" alt="" class="widget-img" aria-hidden="true" />
+      <div class="widget-body anime-list">
+        <span class="anime-tag">BABYMETAL</span>
+        <span class="anime-tag">BiSH</span>
+        <span class="anime-tag">ZOC</span>
+
+        <span class="anime-tag">ClariS</span>
+        <span class="anime-tag">Maison Book Girl</span>
+
+        <span class="anime-tag">YOASOBI</span>
+        <span class="anime-tag">PassCode</span>
+
+        <span class="anime-tag">Broken By The Scream</span>
+
+        <span class="anime-tag">KAQRIYOTERROR</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main body -->
+  <article class="main-content" aria-label="Main article">
+
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-date">Last update: 21.02.2026</span>
+        <h2 class="post-title">~ introduction / about me ~</h2>
+      </div>
+      <div class="post-body">
+        <p>
+          hey, i'm sammwy. i work in <strong>cybersecurity</strong>,
+          <strong>malware research</strong> and <strong>reverse engineering</strong>.
+          also building <strong>full-stack systems</strong> and lately experimenting
+          with <strong>AI agents</strong>.
+          self-taught. learned the hard way.
+        </p>
+
+        <p>
+          outside of that: <strong>anime</strong>, <strong>y2k internet</strong>,
+          breakcore, retro 8/16-bit games.
+          aesthetics rotate between <strong>jirai kei</strong>, cottagecore,
+          cyber pop, <strong>yami kawaii</strong>, lolita, <strong>visual kei</strong>,
+          <strong>tenshi kaiwai</strong>, menhera, kogal, goth,
+          scene, grunge and <strong>pastel goth</strong> in the mix.
+        </p>
+
+        <p>
+          food-wise: <strong>pasta</strong> (canelones & ravioles especially),
+          <strong>caramel macchiato</strong> from starbucks,
+          and mascarpone or <strong>mint ice cream</strong>.
+          minimalism enjoyer.
+        </p>
+
+        <img src="assets/hi.webp" alt="welcome"
+          style="width: 100%; margin: 10px auto 0; display: block; border-radius: 4px;" />
+      </div>
+
+
+      <div class="post-footer">
+        <span class="post-tag">cybersecurity</span>
+        <span class="post-tag">malware</span>
+        <span class="post-tag">fullstack</span>
+        <span class="post-tag">anime</span>
+        <span class="post-tag">y2k</span>
+        <span class="post-tag">jirai kei</span>
+        <span class="post-tag">yami</span>
+        <span class="post-tag">visual kei</span>
+        <span class="post-tag">tenshi kawaii</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-date">Last update: 28.06.2024</span>
+        <h2 class="post-title">~ latest clients ~</h2>
+      </div>
+      <div class="post-body">
+        <div class="clients-grid">
+          <a href="https://x.com/eufoniastudio" target="_blank" class="client-mini-card">
+            <span class="client-name">Eufonia Studio</span>
+            <span class="client-category">Company</span>
+            <span class="client-comment">Minecraft modding.</span>
+          </a>
+
+          <a href="https://twitch.tv/rubius" target="_blank" class="client-mini-card">
+            <span class="client-name">Rubius</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations &amp; modding.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/robleis" target="_blank" class="client-mini-card">
+            <span class="client-name">Robleis</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations &amp; modding.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/carreraaa" target="_blank" class="client-mini-card">
+            <span class="client-name">Carreraaa</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/xcry" target="_blank" class="client-mini-card">
+            <span class="client-name">Cry</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations &amp; modding.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/staryuuki" target="_blank" class="client-mini-card">
+            <span class="client-name">Staryuuki</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/elspreen" target="_blank" class="client-mini-card">
+            <span class="client-name">Spreen</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/farfadoxvevo" target="_blank" class="client-mini-card">
+            <span class="client-name">Farfadox</span>
+            <span class="client-category">YouTuber/Streamer</span>
+            <span class="client-comment">Software development.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/lexosi" target="_blank" class="client-mini-card">
+            <span class="client-name">Lexosi</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/soarinng" target="_blank" class="client-mini-card">
+            <span class="client-name">Soarinng</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Minecraft modding.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/alexby11" target="_blank" class="client-mini-card">
+            <span class="client-name">Alexby11</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Game server management.</span>
+          </a>
+
+          <a href="https://www.youtube.com/c/pipepino" target="_blank" class="client-mini-card">
+            <span class="client-name">Pipepino</span>
+            <span class="client-category">YouTuber</span>
+            <span class="client-comment">Website development.</span>
+          </a>
+
+          <a href="https://www.youtube.com/@Jota." target="_blank" class="client-mini-card">
+            <span class="client-name">Jota</span>
+            <span class="client-category">YouTuber</span>
+            <span class="client-comment">Website development.</span>
+          </a>
+
+          <a href="https://www.twitch.tv/fapparamoar" target="_blank" class="client-mini-card">
+            <span class="client-name">FapParaMoar</span>
+            <span class="client-category">Streamer</span>
+            <span class="client-comment">Twitch integrations.</span>
+          </a>
+        </div>
+
+        <img src="assets/heyo.webp" alt="welcome"
+          style="width: 100%; margin: 10px auto 0; display: block; border-radius: 4px;" />
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-date">Last update: 21.02.2026</span>
+        <h2 class="post-title">~ tech stack ~</h2>
+      </div>
+      <div class="post-body stack-body">
+
+        <div class="stack-group">
+          <span class="stack-label">languages</span>
+          <div class="stack-list">
+            <span class="anime-tag">Bash</span>
+            <span class="anime-tag">C#</span>
+            <span class="anime-tag">CSS</span>
+            <span class="anime-tag">Go</span>
+            <span class="anime-tag">HTML</span>
+            <span class="anime-tag">Java</span>
+            <span class="anime-tag">JavaScript</span>
+            <span class="anime-tag">Python</span>
+            <span class="anime-tag">Rust</span>
+            <span class="anime-tag">Sass</span>
+            <span class="anime-tag">SQL</span>
+            <span class="anime-tag">TypeScript</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-label">frameworks &amp; libs</span>
+          <div class="stack-list">
+            <span class="anime-tag">Apollo</span>
+            <span class="anime-tag">Bootstrap</span>
+            <span class="anime-tag">Bun</span>
+            <span class="anime-tag">ChakraUI</span>
+            <span class="anime-tag">.NET</span>
+            <span class="anime-tag">Electron</span>
+            <span class="anime-tag">Express</span>
+            <span class="anime-tag">GitHub Actions</span>
+            <span class="anime-tag">GraphQL</span>
+            <span class="anime-tag">Hono</span>
+            <span class="anime-tag">JWT</span>
+            <span class="anime-tag">NestJS</span>
+            <span class="anime-tag">NextJS</span>
+            <span class="anime-tag">Passport</span>
+            <span class="anime-tag">React</span>
+            <span class="anime-tag">Socket.IO</span>
+            <span class="anime-tag">TailwindCSS</span>
+            <span class="anime-tag">Tauri</span>
+            <span class="anime-tag">Unity</span>
+            <span class="anime-tag">Vite</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-label">tools</span>
+          <div class="stack-list">
+            <span class="anime-tag">Apache</span>
+            <span class="anime-tag">Debian</span>
+            <span class="anime-tag">Docker</span>
+            <span class="anime-tag">Git</span>
+            <span class="anime-tag">Gradle</span>
+            <span class="anime-tag">Jenkins</span>
+            <span class="anime-tag">Maven</span>
+            <span class="anime-tag">Nginx</span>
+            <span class="anime-tag">OBS</span>
+            <span class="anime-tag">Ubuntu</span>
+            <span class="anime-tag">VSCode</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-label">cloud &amp; infra</span>
+          <div class="stack-list">
+            <span class="anime-tag">AWS</span>
+            <span class="anime-tag">Cloudflare</span>
+            <span class="anime-tag">CF Workers</span>
+            <span class="anime-tag">GitHub</span>
+            <span class="anime-tag">MariaDB</span>
+            <span class="anime-tag">MongoDB</span>
+            <span class="anime-tag">MySQL</span>
+            <span class="anime-tag">OVH</span>
+            <span class="anime-tag">Railway</span>
+            <span class="anime-tag">Redis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-date">Last update: 21.02.2026</span>
+        <h2 class="post-title">~ side projects ~</h2>
+      </div>
+      <div class="post-body">
+        <ul class="project-list">
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/teragen" target="_blank">Teragen</a> —
+            Terminal-based AI programming agent written in Go.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/minusbot-org/minusbot"
+              target="_blank">MinusBot</a> — Powerful, secure, modular personal AI agent.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/inkshelf" target="_blank">Inkshelf</a>
+            — Self-hosted manga/manhwa/manhua/comics server and reader.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/MikuMikuBeam"
+              target="_blank">MikuMikuBeam</a> — Open-source network stresser but it's Hatsune Miku.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/cosmisum" target="_blank">Cosmisum</a>
+            — Python pipeline for analyzing manga, comics and documents.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Tasel" target="_blank">Tasel</a>
+            — Git hooks manager with built-in commit-lint.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/NRelay" target="_blank">NRelay</a> —
+            Self-hosted OOB reverse tunnel (TCP/UDP/SNI/HTTP/MC).</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/tsk" target="_blank">TSK</a> —
+            Fast command-line process manager written in Rust.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/specter" target="_blank">Specter</a> —
+            MiTM proxy for app networking analysis.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/BLEeding" target="_blank">BLEeding</a>
+            — Bluetooth/BLE jamming, DoS and DeAuth attack tool.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/StoryMaker"
+              target="_blank">StoryMaker</a> — Browser-based image editor for Instagram stories.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/ARCX" target="_blank">ARCX</a>
+            — Structured daemon manager for Linux user space written in Go.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/spear" target="_blank">Spear</a>
+            — Modular and extensible NIDS/HIDS intrusion detection system.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/listnr" target="_blank">Listnr</a> —
+            TUI/Terminal interactive music player.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/HotRouter"
+              target="_blank">HotRouter</a> — Dynamic HTTP reverse proxy with runtime config management.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/runtainer"
+              target="_blank">Runtainer</a> — Container orchestrator for multiple dev environment runtimes.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/yfs" target="_blank">YFS</a> —
+            Vertical filesystem in Go using indexes, bitmaps and block storage.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/ccw" target="_blank">CCW</a> —
+            Container worker with REST API and WS for FS ops and shell exec.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/MiniLaunch"
+              target="_blank">MiniLaunch</a> — Simple minimalist launcher for Minecraft.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/gdbc" target="_blank">GDBC</a>
+            — Terminal GDB client in Rust for remote debugging operations.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/PokExPy" target="_blank">PokExPy</a> —
+            Pokemon game resource extractor in Python.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/memdrop" target="_blank">memdrop</a> —
+            In-memory PE loader and executor.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Dishost" target="_blank">Dishost</a> —
+            IP range scanner with configurable health checks.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Lake" target="_blank">Lake</a>
+            — Universal build system with Lua scripting.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/SpearCopy"
+              target="_blank">SpearCopy</a> — Universal local phishing toolkit for audit purposes.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/NoVM" target="_blank">NoVM</a>
+            — Tool to hide virtual machines from malicious actors.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/ruster" target="_blank">Ruster</a> —
+            Directory buster tool built in Rust.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/SQLand" target="_blank">SQLand</a> —
+            Automated SQL injection vulnerability detection.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/OSKD" target="_blank">OSKD</a>
+            — On-screen keyboard display for coding streams.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/piducky" target="_blank">PiDucky</a> —
+            RubberDucky script interpreter for Raspberry Pi via USBHID.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/usbhid" target="_blank">USBHID</a> —
+            Rust library for the USB HID protocol.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/Lure" target="_blank">Lure</a>
+            — Next-gen L7 Minecraft proxy and load balancer built in Rust.</li>
+          <li><span class="proj-icon">~</span><a href="https://github.com/sammwyy/mindns" target="_blank">MinDNS</a> —
+            Minimal DNS server in Rust with rule system and logging.</li>
+        </ul>
+      </div>
+      <div class="post-footer">
+        <span class="post-tag">projects</span>
+        <span class="post-tag">open source</span>
+        <span class="post-tag">rust</span>
+        <span class="post-tag">go</span>
+        <span class="post-tag">security</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Right column -->
+  <aside class="sidebar sidebar--right" aria-label="Right sidebar">
+
+    <!-- Links / Socials -->
+    <div class="widget">
+      <div class="widget-title">~ socials</div>
+      <img src="assets/neko.jpg" alt="" style="width: 100%;" aria-hidden="true" />
+      <div class="widget-body">
+        <div class="social-list">
+          <a href="https://github.com/sammwyy" target="_blank" class="social-link">
+            <strong>GitHub</strong> <span>sammwyy</span>
+          </a>
+          <a href="https://twitter.com/sammwy" target="_blank" class="social-link">
+            <strong>Twitter</strong> <span>@sammwy</span>
+          </a>
+          <a href="https://twitch.tv/sammwy" target="_blank" class="social-link">
+            <strong>Twitch</strong> <span>sammwy</span>
+          </a>
+          <a href="https://youtube.com/c/sammwy" target="_blank" class="social-link">
+            <strong>YouTube</strong> <span>sammwy</span>
+          </a>
+          <a href="https://anilist.co/user/sammwy/" target="_blank" class="social-link">
+            <strong>AniList</strong> <span>sammwy</span>
+          </a>
+          <div class="social-link" style="flex-direction: column; align-items: flex-start; cursor: default;">
+            <div style="display: flex; justify-content: space-between; width: 100%;"><strong>Steam</strong>
+              <span>sammwy</span>
+            </div>
+            <span class="social-note">(Don't add me as friend please)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Last game completed -->
+    <div class="widget">
+      <div class="widget-title" style="text-align: center;">Last game completed</div>
+      <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
+        {{custom:last_game}}
+      </div>
+    </div>
+
+    <!-- Last anime watched -->
+    <div class="widget">
+      <div class="widget-title" style="text-align: center;">Last anime watched</div>
+      <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
+        {{custom:last_anime}}
+      </div>
+    </div>
+
+    <!-- Last book/comic read -->
+    <div class="widget">
+      <div class="widget-title" style="text-align: center;">Last book/comic read</div>
+      <div class="widget-body" style="text-align: center; font-family: var(--font-vt323); font-size: 1.2rem;">
+        {{custom:last_book}}
+      </div>
+    </div>
+
+    <!-- Meme widget -->
+    <div class="widget">
+      <div class="widget-title">~ mood</div>
+      <div class="widget-body" style="padding: 0; background: #000;">
+        <img src="assets/howdy.jpg" alt="meme" style="width: 100%; display: block;" />
+      </div>
+    </div>
+
+    <!-- Blog Widget -->
+    <div class="widget">
+      <div class="widget-title">~ blog (Latest)</div>
+      <div class="widget-body">
+        <div class="social-list" style="text-align: center;">
+          <a href="{{custom:last_post_url}}" target="_blank" class="social-link blog-item">
+            <span class="blog-post-title">{{custom:last_post_title}}</span>
+          </a>
+          <a href="{{custom:last_post_2_url}}" target="_blank" class="social-link blog-item">
+            <span class="blog-post-title">{{custom:last_post_2_title}}</span>
+          </a>
+          <a href="{{custom:last_post_3_url}}" target="_blank" class="social-link blog-item">
+            <span class="blog-post-title">{{custom:last_post_3_title}}</span>
+          </a>
+          <a href="{{custom:blog_url}}" target="_blank" class="social-link blog-item">
+            <span>View all posts</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Hit counter -->
+    <div class="widget">
+      <div class="widget-title">~ hits</div>
+      <div class="widget-body hits-body">
+        <div class="hit-counter">{{visits:counter}}</div>
+        <p class="hit-label">visitors ♥</p>
+      </div>
+    </div>
+
+  </aside>
+
+</section>

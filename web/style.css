@@ -973,3 +973,87 @@ a:hover {
   white-space: nowrap;
   margin-left: 10px;
 }
+
+/* ── GALLERY ── */
+.gallery-container {
+  display: block;
+  /* Override site-container grid */
+  padding: 20px;
+}
+
+.gallery-header {
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--pink-hot);
+  padding-bottom: 10px;
+}
+
+.gallery-title {
+  font-family: var(--font-pixel);
+  color: var(--text-accent-hot);
+  font-size: 1rem;
+  /* Slightly smaller for better pixel rendering */
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 400;
+  /* Ensure no faux-bolding */
+  text-shadow: 1px 1px 0 var(--white);
+  /* Lighter shadow for clarity */
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.gallery-item {
+  background: var(--glass-bg-lite);
+  border: 2px solid var(--pink-low);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--shadow-pink-soft);
+  transition: transform 0.1s;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--pink-hot);
+  border-color: var(--pink-hot);
+}
+
+.gallery-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed var(--border-medium);
+}
+
+.gallery-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  /* Don't crop, geocities style */
+  image-rendering: pixelated;
+}
+
+.gallery-caption {
+  padding: 5px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  /* Match widget title size */
+  color: var(--text-mid);
+  background: var(--pink-pale);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
