@@ -234,7 +234,7 @@ body::before {
 .site-header {
   width: 100%;
   min-height: 210px;
-  background-image: url('assets/header.gif');
+  background-image: url('assets/header.web');
   background-size: cover;
   background-position: center 25%;
   border: 3px solid var(--pink-hot);
