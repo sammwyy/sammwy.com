@@ -76,5 +76,5 @@
     --border-dashed: 2px dashed var(--pink-mid);
 
     /* ── Assets ── */
-    --bg-image: url('assets/bg_pink.jpg');
+    --bg-image: url('assets/bgs/bg_pink.jpg');
 }

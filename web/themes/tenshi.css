@@ -78,5 +78,5 @@
     --border-dashed: 2px dashed var(--pink-mid);
 
     /* ── Assets ── */
-    --bg-image: url('assets/bg_tenshi.jpg');
+    --bg-image: url('assets/bgs/bg_tenshi.jpg');
 }
