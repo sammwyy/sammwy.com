@@ -496,6 +496,7 @@ name = "sammwy-web-server"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "bytes",
  "clap",
  "mime_guess",
  "serde",
