@@ -1,0 +1,51 @@
+---
+import Sfx from "./Sfx.astro";
+import type { Site } from "../lib/data";
+
+interface Props {
+  site: Site;
+}
+const { site } = Astro.props;
+const { hero, profile, popup } = site;
+---
+<header class="hero">
+<div class="logo-block">
+<p class="pre">&#9655; {hero.pre}</p>
+<h1 class="chrome" data-text={hero.title}>{hero.title}</h1>
+<p class="kata">{hero.kata.map((k, i) => <>{i > 0 && <span> &#9670; </span>}{k}</>)}</p>
+<p class="tag">&#10022; {hero.tag} &#10022;</p>
+<div class="barcode-row"><span class="barcode"></span><span class="code">{hero.code}</span></div>
+</div>
+
+<div class="globe-wrap">
+<div class="globe"><i></i><i></i><i></i><i></i><i class="eq"></i><i class="eq2"></i></div>
+<span class="orbit o1"></span>
+<span class="orbit o2"></span>
+<input type="checkbox" id="x-popup" class="x-toggle" />
+<div class="popup">
+<div class="popup-bar"><span>{popup.title}</span><label for="x-popup">&#215;<Sfx kind="close" /></label></div>
+<div class="popup-body">
+<span class="popup-icon">!</span>
+<p set:html={popup.text} />
+</div>
+<div class="popup-actions">{popup.actions.map((a) => <label for="x-popup">{a}<Sfx kind="close" /></label>)}</div>
+</div>
+</div>
+
+<div class="idcard hud">
+<span class="sticker round">Y2K<br /><small>certified</small></span>
+<div class="id-head"><span>SUBJECT FILE</span><span>#0416</span></div>
+<div class="id-body">
+<div class="id-pic cam">
+<img class="cam-feed" src={profile.avatar} alt="sammwy on cam" width="128" height="128" />
+<span class="rec">&#9679; REC</span>
+<span class="cam-id">CAM_01</span>
+</div>
+<dl>{profile.fields.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+</div>
+<div class="stats">
+{profile.stats.map((s) => <label>{s.label} <span class:list={["meter", { low: s.low }]} style={`--v:${s.value}%`}></span></label>)}
+</div>
+<p class="cam-cap">{profile.camCaption}</p>
+</div>
+</header>

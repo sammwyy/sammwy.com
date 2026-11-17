@@ -1,0 +1,15 @@
+---
+import type { getBuild } from "../lib/build";
+
+interface Props {
+  build: ReturnType<typeof getBuild>;
+}
+const { build } = Astro.props;
+const delay = `animation-delay:-${build.uptime.rest}s`;
+---
+<section class="glass hud uptime">
+<h2 class="ph"><b>T+</b> UPTIME <span class="hatch"></span></h2>
+<p class="up-big"><span class="up-n">{build.uptime.days}</span><i>d</i><span class="up-n up-h" style={delay}></span><i class="colon">:</i><span class="up-n up-m" style={delay}></span><i class="colon">:</i><span class="up-n up-s" style={delay}></span></p>
+<div class="up-bar"><span style={`animation-delay:-${build.uptime.rest % 60}s`}></span></div>
+<p class="up-foot"><span>since last mod</span><span>{build.modifiedLabel}</span></p>
+</section>

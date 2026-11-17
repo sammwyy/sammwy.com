@@ -1,0 +1,112 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import IndexNav from "../components/IndexNav.astro";
+import Player from "../components/Player.astro";
+import Buddies from "../components/Buddies.astro";
+import Tama from "../components/Tama.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Guestbook from "../components/Guestbook.astro";
+import Uptime from "../components/Uptime.astro";
+import Links from "../components/Links.astro";
+import Wlm from "../components/Wlm.astro";
+import Sfx from "../components/Sfx.astro";
+import { getProjects, getSite, getSocial } from "../lib/data";
+import { getBuild } from "../lib/build";
+import { getPosts } from "../lib/blog";
+
+const site = getSite();
+const social = getSocial();
+const { projects, clients } = getProjects();
+const build = getBuild(site);
+const posts = getPosts();
+const featured = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured)].slice(0, site.featuredProjects);
+const more = projects.length - featured.length;
+---
+<Base>
+<Hero site={site} />
+
+<div class="tape"><marquee scrollamount="4">{site.tape}</marquee></div>
+
+<div class="layout">
+
+<aside class="col-l">
+<IndexNav />
+<Player np={site.nowPlaying} />
+<Buddies channels={social.twitch.channels} title={social.twitch.title} />
+<Tama pet={site.pet} />
+</aside>
+
+<main class="col-c">
+
+<section class="glass hud about" id="about">
+<h2 class="ph big"><b>01</b> ABOUT ME <span class="hatch"></span><small>SYS.OK</small></h2>
+<div class="about-body">
+<p class="lead" set:html={site.about.lead} />
+{site.about.paragraphs.map((p) => <p set:html={p} />)}
+<div class="chips">{site.about.chips.map((c) => <span>{c}</span>)}</div>
+</div>
+</section>
+
+<div class="split">
+<section class="glass hud online-card">
+<p class="status">Sammwy is {site.status.online ? "online" : "away"}</p>
+<p class="mood">last watched: <b>{site.status.lastWatched}</b><br />last cleared: <b>{site.status.lastCleared}</b></p>
+<a class="gloss" href="#guestbook">say hi?<Sfx /></a>
+</section>
+<section class="glass hud quote">
+<p set:html={site.quote.text} />
+<small>&mdash; {site.quote.author}</small>
+</section>
+</div>
+
+<section class="glass hud log" id="log">
+<h2 class="ph big"><b>02</b> TRANSMISSIONS <span class="hatch"></span><small>/BLOG</small></h2>
+<div class="terminal">
+<p><span class="t">sammwy@node:~$</span> ls ./blog --latest</p>
+{posts.slice(0, 3).map((p) => <p><span class="t">[#{p.n}]</span> <a href={`/blog/${p.slug}`}>{p.title}</a></p>)}
+{posts.length === 0 && <p>no transmissions yet.</p>}
+<p><span class="t">sammwy@node:~$</span> <a href="/blog">open --all</a></p>
+<p class="cursor">&gt; _</p>
+</div>
+</section>
+
+<section class="glass hud projects" id="projects">
+<h2 class="ph big"><b>03</b> PROJECTS <span class="hatch"></span><small>{projects.length} REPOS</small></h2>
+<div class="proj-grid">{featured.map((p) => <ProjectCard project={p} />)}</div>
+<a class="gloss wide" href="/projects">+{more} more &raquo; /projects<Sfx /></a>
+<p class="clients"><span>worked with</span> {clients.map((c) => c.name.toLowerCase()).join(" · ")}</p>
+</section>
+
+<Guestbook />
+
+</main>
+
+<aside class="col-r">
+<Uptime build={build} />
+
+<section class="glass hud warn">
+<p class="w-title"><img class="ico" src="/assets/icons/warning.png" alt="" width="32" height="32" /> {site.warn.title}</p>
+<p set:html={site.warn.text} />
+<p class="w-code">{site.warn.code} // LAST SYNC {build.modifiedLabel.split(" ")[1]}</p>
+</section>
+
+<section class="glass hud" id="interests">
+<h2 class="ph"><b>05</b> INTERESTS</h2>
+<dl class="ints">{social.interests.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+</section>
+
+<section class="glass hud" id="friends">
+<h2 class="ph"><b>06</b> WEEB FRENDS</h2>
+<div class="top8">
+{social.friends.map((f) => (
+  <a href={f.url ?? "#friends"}><Wlm status={f.status} avatar={f.avatar} style={f.style} alt={f.name} />{f.name}<Sfx /></a>
+))}
+</div>
+</section>
+
+<Links links={social.links} />
+</aside>
+
+</div>
+</Base>

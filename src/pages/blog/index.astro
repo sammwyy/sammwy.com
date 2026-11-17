@@ -1,0 +1,47 @@
+---
+import Base from "../../layouts/Base.astro";
+import ViewHead from "../../components/ViewHead.astro";
+import BlogSidebar from "../../components/BlogSidebar.astro";
+import Sfx from "../../components/Sfx.astro";
+import { formatDate, getPosts } from "../../lib/blog";
+
+const posts = getPosts();
+const latest = posts[0];
+const rest = posts.slice(1);
+const year = Number(Astro.url.searchParams.get("year")) || latest?.year || new Date().getFullYear();
+---
+<Base title="BLOG" description="sammwy's blog: write-ups, notes and transmissions.">
+<ViewHead title="BLOG" path="blog" sub={`${posts.length} transmissions . notes, write-ups & rambles`} />
+
+<div class="layout layout-blog">
+<BlogSidebar posts={posts} year={year} />
+
+<main class="col-c">
+{latest ? (
+  <article class="glass hud blog-hero">
+    <p class="bh-label"><b>LATEST UPDATE</b> <span>#{latest.n} &middot; {formatDate(latest)} &middot; {latest.minutes} min read</span></p>
+    <h2><a href={`/blog/${latest.slug}`}>{latest.title}</a></h2>
+    {latest.description && <p class="bh-desc">{latest.description}</p>}
+    {latest.brief && <p class="bh-brief">{latest.brief}</p>}
+    <a class="gloss" href={`/blog/${latest.slug}`}>read transmission &raquo;<Sfx /></a>
+  </article>
+) : (
+  <section class="glass hud blog-hero"><p class="bh-desc">no transmissions yet. check back later.</p></section>
+)}
+
+{rest.length > 0 && (
+  <section class="glass hud blog-list">
+    <h2 class="ph big"><b>LOG</b> ALL ENTRIES <span class="hatch"></span><small>{rest.length} OLDER</small></h2>
+    {rest.map((p) => (
+      <a class="bl-item" href={`/blog/${p.slug}`}>
+        <span class="bl-n">#{p.n}</span>
+        <span class="bl-body"><b>{p.title}</b>{p.description && <small>{p.description}</small>}</span>
+        <span class="bl-date">{formatDate(p)}</span>
+        <Sfx />
+      </a>
+    ))}
+  </section>
+)}
+</main>
+</div>
+</Base>

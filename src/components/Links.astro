@@ -1,0 +1,16 @@
+---
+import Sfx from "./Sfx.astro";
+import type { Social } from "../lib/data";
+
+interface Props {
+  links: Social["links"];
+  num?: string;
+}
+const { links, num = "07" } = Astro.props;
+---
+<section class="glass hud" id="links">
+<h2 class="ph"><b>{num}</b> LINKS</h2>
+{links.map((l) => (
+  <a class="lnk" href={l.url}><span><img class="ico" src={`/assets/icons/${l.icon}.png`} alt="" width="64" height="64" /></span> {l.label}<small>{l.handle}</small><Sfx /></a>
+))}
+</section>

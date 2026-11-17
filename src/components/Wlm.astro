@@ -1,0 +1,17 @@
+---
+import type { Status } from "../lib/data";
+import { FRAME, statusIcon } from "../lib/assets";
+
+interface Props {
+  status: Status;
+  avatar?: string;
+  style?: string;
+  alt?: string;
+}
+const { status, avatar, style, alt = "" } = Astro.props;
+---
+<span class:list={["wlm", status]}>
+<span class:list={["pic", style]}>{avatar && <img src={avatar} alt={alt} width="64" height="64" loading="lazy" />}</span>
+<img class="wlm-frame" src={FRAME} alt="" width="190" height="190" loading="lazy" />
+<img class="wlm-status" src={statusIcon(status)} alt="" width="48" height="48" loading="lazy" />
+</span>

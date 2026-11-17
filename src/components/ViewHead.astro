@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+  path: string;
+  sub?: string;
+}
+const { title, path, sub } = Astro.props;
+---
+<header class="viewhead">
+<p class="crumbs"><a href="/">sammwy.com</a> <span>/</span> {path}</p>
+<h1 class="chrome" data-text={title}>{title}</h1>
+{sub && <p class="vh-sub">{sub}</p>}
+<span class="barcode"></span>
+</header>

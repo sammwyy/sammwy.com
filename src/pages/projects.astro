@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+import Thumb from "../components/Thumb.astro";
+import Sfx from "../components/Sfx.astro";
+import { getCategories, getProjects, slugOf } from "../lib/data";
+
+const PER_PAGE = 20;
+const { projects } = getProjects();
+const cats = getCategories().filter((c) => c.count > 0);
+const q = Astro.url.searchParams;
+const tag = cats.some((c) => c.id === q.get("cat")) ? q.get("cat") : null;
+const list = tag ? projects.filter((p) => p.category === tag) : projects;
+const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+const page = Math.min(pages, Math.max(1, Number(q.get("page")) || 1));
+const shown = list.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+const empty = PER_PAGE - shown.length;
+const href = (p: number, t: string | null = tag) => {
+  const s = new URLSearchParams();
+  if (t) s.set("cat", t);
+  if (p > 1) s.set("page", String(p));
+  return `/projects${s.size ? `?${s}` : ""}`;
+};
+---
+<Base title="CHANNELS" bare full wii description="every open source project by sammwy as a channel menu.">
+<main class="wm">
+
+<nav class="wm-tags" aria-label="categories">
+<a href={href(1, null)} class:list={{ on: !tag }}><img class="cat-ico" src="/assets/icons/all.png" alt="" width="64" height="64" />All<small>{projects.length}</small><Sfx /></a>
+{cats.map((c) => <a href={href(1, c.id)} class:list={{ on: c.id === tag }}><img class="cat-ico" src={`/assets/icons/${c.icon}.png`} alt="" width="64" height="64" />{c.label}<small>{c.count}</small><Sfx /></a>)}
+</nav>
+
+<div class="wm-stage">
+{page > 1 && <a class="wm-arrow prev" href={href(page - 1)} aria-label="previous page"><svg><use href="#wii-arrow" /></svg><Sfx /></a>}
+<div class="wm-grid">
+{shown.map((p) => (
+  <a class="wm-ch" href={`/projects/${slugOf(p)}`} aria-label={p.name}>
+    <Thumb project={p} />
+    <span class="wm-tip">{p.name}</span>
+    <Sfx />
+  </a>
+))}
+{Array.from({ length: empty }, () => <span class="wm-ch empty"></span>)}
+</div>
+{page < pages && <a class="wm-arrow next" href={href(page + 1)} aria-label="next page"><svg><use href="#wii-arrow" /></svg><Sfx /></a>}
+</div>
+
+{pages > 1 && <div class="wm-dots">{Array.from({ length: pages }, (_, i) => <a href={href(i + 1)} class:list={{ on: i + 1 === page }} aria-label={`page ${i + 1}`}></a>)}</div>}
+
+</main>
+</Base>

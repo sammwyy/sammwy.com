@@ -1,0 +1,42 @@
+---
+import type { Site } from "../lib/data";
+
+interface Props {
+  pet: Site["pet"];
+}
+const { pet } = Astro.props;
+const hearts = (n: number) => Array.from({ length: 4 }, (_, i) => (i < n ? "#px-heart" : "#px-heart-o"));
+---
+<section class="glass hud tama-card" data-tama data-name={pet.name}>
+<h2 class="ph"><b>PET</b> {pet.name.toUpperCase()}.PET</h2>
+<div class="tama" data-mood="idle" data-poop="1">
+<span class="tama-chain"></span>
+<div class="tama-screen">
+<svg class="tama-icons" viewBox="0 0 37 7" shape-rendering="crispEdges" aria-hidden="true"><path d="M3 0h1v1H3zM1 1h2v1H1zM4 1h2v1H4zM0 2h7v3H0zM1 5h5v1H1zM2 6h1v1H2zM4 6h1v1H4z" fill="#1d2a1a"/><path d="M12 0h3v1h-3zM11 1h1v3h-1zM15 1h1v3h-1zM12 4h3v2h-3zM13 6h1v1h-1zM22 0h3v1h-3zM21 1h1v1h-1zM25 1h1v1h-1zM20 2h1v1h-1zM26 2h1v1h-1zM20 3h7v1h-7zM20 4h1v1h-1zM26 4h1v1h-1zM21 5h1v1h-1zM25 5h1v1h-1zM22 6h3v1h-3zM32 0h3v2h-3zM30 2h7v3h-7zM32 5h3v2h-3z" fill="#1d2a1a" opacity=".28"/></svg>
+<div class="tama-stage">
+<span class="tama-msg" data-msg></span>
+<svg class="tama-pet" viewBox="0 0 10 9" shape-rendering="crispEdges" aria-hidden="true"><path d="M3 0h4v1H3zM2 1h6v1H2zM1 2h8v1H1zM1 3h2v1H1zM4 3h2v1H4zM7 3h2v1H7zM0 4h10v1H0zM0 5h4v1H0zM6 5h4v1H6zM0 6h10v2H0zM0 8h1v1H0zM2 8h2v1H2zM6 8h2v1H6zM9 8h1v1H9z" fill="#1d2a1a"/></svg>
+<svg class="tama-heart" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><use href="#px-heart" /></svg>
+<svg class="tama-food" viewBox="0 0 5 5" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 0h1v1H2zM1 1h3v1H1zM0 2h5v2H0zM1 4h3v1H1z" fill="#1d2a1a"/></svg>
+<span class="tama-zzz">z<b>Z</b></span>
+<span class="tama-alert">!</span>
+<span class="tama-poop">{[1, 2, 3].map(() => <svg viewBox="0 0 4 3" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 0h1v1H1zM0 1h3v1H0zM0 2h4v1H0z" fill="#1d2a1a" /></svg>)}</span>
+</div>
+<svg class="tama-icons" viewBox="0 0 37 7" shape-rendering="crispEdges" aria-hidden="true"><path d="M20 1h7v1h-7zM20 2h2v1h-2zM25 2h2v1h-2zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM26 3h1v1h-1zM20 4h1v1h-1zM23 4h1v1h-1zM26 4h1v1h-1zM20 5h7v1h-7z" fill="#1d2a1a"/><path d="M3 0h1v1H3zM2 1h3v1H2zM1 2h5v1H1zM0 3h7v2H0zM1 5h5v1H1zM2 6h3v1H2zM10 4h2v3h-2zM13 2h2v5h-2zM16 0h1v7h-1zM33 0h1v4h-1zM33 5h1v2h-1z" fill="#1d2a1a" opacity=".28"/></svg>
+</div>
+<div class="tama-btns">
+<button type="button" data-act="feed" title="A: feed" aria-label="feed"></button>
+<button type="button" data-act="play" title="B: play" aria-label="play"></button>
+<button type="button" data-act="clean" title="C: clean" aria-label="clean"></button>
+</div>
+</div>
+<dl class="tama-stats">
+<dt>name</dt><dd>{pet.name}</dd>
+<dt>age</dt><dd data-age>{pet.age}</dd>
+<dt>hunger</dt><dd class="hearts" data-hearts="hunger">{hearts(pet.hunger).map((h) => <svg><use href={h} /></svg>)}</dd>
+<dt>happy</dt><dd class="hearts" data-hearts="happy">{hearts(pet.happy).map((h) => <svg><use href={h} /></svg>)}</dd>
+<dt>status</dt><dd data-status>ok</dd>
+</dl>
+<p class="tama-help">A feed &middot; B play &middot; C clean</p>
+<script is:inline src="/tamagotchi.js" defer></script>
+</section>

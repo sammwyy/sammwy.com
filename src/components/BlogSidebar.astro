@@ -1,0 +1,33 @@
+---
+import Sfx from "./Sfx.astro";
+import { archive, type Post } from "../lib/blog";
+
+interface Props {
+  posts: Post[];
+  year: number;
+  current?: string;
+}
+const { posts, year, current } = Astro.props;
+const a = archive(posts, year);
+---
+<aside class="col-l blog-side">
+<nav class="glass hud bsb" aria-label="blog archive">
+<div class="bsb-year">
+{a.older ? <a href={`/blog?year=${a.older}`} aria-label={`year ${a.older}`}>&lsaquo;<Sfx /></a> : <span>&lsaquo;</span>}
+<b>{a.year}</b>
+{a.newer ? <a href={`/blog?year=${a.newer}`} aria-label={`year ${a.newer}`}>&rsaquo;<Sfx /></a> : <span>&rsaquo;</span>}
+</div>
+{a.months.length === 0 && <p class="bsb-empty">no transmissions yet.</p>}
+{a.months.map((m) => (
+  <div class="bsb-month">
+    <p class="bsb-label">{m.label}:</p>
+    {m.posts.map((p) => (
+      <a href={`/blog/${p.slug}`} class:list={{ on: p.slug === current }} aria-current={p.slug === current ? "page" : undefined}>
+        <span>#{p.n}</span> {p.title}<Sfx />
+      </a>
+    ))}
+  </div>
+))}
+</nav>
+<a class="gloss wide" href="/">&laquo; / about me<Sfx kind="close" /></a>
+</aside>

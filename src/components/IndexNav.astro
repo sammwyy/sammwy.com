@@ -1,0 +1,17 @@
+---
+import Sfx from "./Sfx.astro";
+
+const sections = [
+  { href: "#about", label: "about_me" },
+  { href: "#log", label: "transmissions" },
+  { href: "#projects", label: "projects" },
+  { href: "#guestbook", label: "guestbook" },
+  { href: "#interests", label: "interests" },
+  { href: "#friends", label: "weeb_frends" },
+  { href: "#links", label: "links" },
+];
+---
+<nav class="glass hud index">
+<h2 class="ph"><b>00</b> INDEX</h2>
+{sections.map((s) => <a href={s.href}>&gt; #{s.label}<Sfx /></a>)}
+</nav>

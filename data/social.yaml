@@ -1,0 +1,22 @@
+links:
+  - { label: github, handle: sammwyy, url: https://github.com/sammwyy, icon: github }
+  - { label: twitter, handle: "@sammwy", url: https://twitter.com/sammwy, icon: twitter }
+  - { label: twitch, handle: sammwy, url: https://twitch.tv/sammwy, icon: twitch }
+  - { label: youtube, handle: sammwy, url: https://youtube.com/c/sammwy, icon: youtube }
+  - { label: anilist, handle: sammwy, url: https://anilist.co/user/sammwy/, icon: anilist }
+  - { label: blog, handle: blog.sammwy.com, url: https://blog.sammwy.com, icon: blog }
+
+interests:
+  - [anime, "serial experiments lain, madoka magica, evangelion, elfen lied, mirai nikki, card captor sakura, toradora!, erased, onimai"]
+  - [games, "needy girl overdose, touhou, undertale, vvvvvv, melty blood, resident evil 4, mega man 3, i wanna kill the guy"]
+  - [visual novels, "saya no uta, higurashi, dramatical murder, subahibi, slow damage, clannad"]
+  - [music, "sewerslvt, femtanyl, inabakumori, vocaloid, usedcvnt, s3rl, gorillaz, arctic monkeys"]
+  - [jp idols, "babymetal, bish, zoc, maison book girl, kaqriyoterror, passcode"]
+  - [stack, "go, rust, typescript, python, c#, docker, cloudflare, react, nest"]
+
+friends:
+  - { name: celeste, url: https://celestelove.dev/, avatar: "https://avatars.githubusercontent.com/u/4616452?size=64", status: on }
+
+twitch:
+  title: STREM FRENDS
+  channels: [sammwy, rubius, dekyrot, stevenmarin_, luisillag, imvipper_]

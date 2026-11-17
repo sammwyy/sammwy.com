@@ -1,0 +1,7 @@
+---
+interface Props {
+  kind?: "select" | "close";
+}
+const { kind = "select" } = Astro.props;
+---
+{kind === "close" && <i data-sfx="close" hidden></i>}

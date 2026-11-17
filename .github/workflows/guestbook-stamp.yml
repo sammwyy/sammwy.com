@@ -1,0 +1,54 @@
+name: guestbook stamp
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/guestbook.yaml
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: guestbook-stamp
+  cancel-in-progress: false
+
+jobs:
+  stamp:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts
+      - name: find author
+        id: who
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr=$(gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" --jq '.[0] // empty')
+          if [ -n "$pr" ]; then
+            echo "login=$(echo "$pr" | jq -r .user.login)" >> "$GITHUB_OUTPUT"
+            echo "url=$(echo "$pr" | jq -r .html_url)" >> "$GITHUB_OUTPUT"
+            echo "date=$(echo "$pr" | jq -r '.merged_at // .created_at')" >> "$GITHUB_OUTPUT"
+          else
+            echo "login=$(gh api "repos/${{ github.repository }}/commits/${{ github.sha }}" --jq '.author.login // .committer.login')" >> "$GITHUB_OUTPUT"
+            echo "url=" >> "$GITHUB_OUTPUT"
+            echo "date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+          fi
+      - name: stamp new entries
+        run: |
+          git show HEAD~1:data/guestbook.yaml > /tmp/before.yaml 2>/dev/null || : > /tmp/before.yaml
+          node scripts/guestbook.mjs stamp /tmp/before.yaml "${{ steps.who.outputs.login }}" "${{ steps.who.outputs.url }}" "${{ steps.who.outputs.date }}"
+      - name: commit
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "guestbook: stamp entry from @${{ steps.who.outputs.login }}"
+          git push

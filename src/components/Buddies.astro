@@ -1,0 +1,37 @@
+---
+import { statusIcon } from "../lib/assets";
+import { getChannels, twitchConfigured } from "../lib/twitch";
+
+interface Props {
+  channels: string[];
+  title?: string;
+}
+const list = await getChannels(Astro.props.channels);
+const live = list.filter((c) => c.live).sort((a, b) => b.viewers - a.viewers);
+const off = list.filter((c) => !c.live);
+const fmt = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : String(n));
+---
+<section class="glass hud buddies">
+<h2 class="ph"><b>IM</b> {Astro.props.title ?? "BUDDY LIST"}</h2>
+<p class="grp">&#9662; Live ({live.length}/{list.length})</p>
+<ul>
+{live.map((c) => (
+  <li class="on">
+    <img class="bi" src={statusIcon("on")} alt="" width="48" height="48" />
+    <a href={`https://twitch.tv/${c.login}`} title={c.title}>{c.name}</a>
+    <small class="live-tag">LIVE &middot; {fmt(c.viewers)}</small>
+    {c.game && <small class="live-game">{c.game}</small>}
+  </li>
+))}
+{live.length === 0 && <li class="none"><small>{twitchConfigured() ? "nobody is live right now" : "twitch not connected"}</small></li>}
+</ul>
+<p class="grp">&#9662; Offline</p>
+<ul>
+{off.map((c) => (
+  <li class="off">
+    <img class="bi" src={statusIcon("off")} alt="" width="48" height="48" />
+    <a href={`https://twitch.tv/${c.login}`}>{c.name}</a>
+  </li>
+))}
+</ul>
+</section>

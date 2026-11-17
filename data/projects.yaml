@@ -1,0 +1,44 @@
+github: https://github.com/sammwyy
+
+categories:
+  - { id: ai, label: AI/LLM Stuff, icon: ai }
+  - { id: linux, label: Linux, icon: linux }
+  - { id: software, label: Software, icon: software }
+  - { id: homebrew, label: Homebrew, icon: homebrew }
+  - { id: reveng, label: Rev Eng, icon: reveng }
+  - { id: hardware, label: Hardware, icon: hardware }
+
+projects:
+  - { name: TinOS, url: https://github.com/sammwyy/TinOS, desc: small i386 kernel + graphical userland operating system., category: hardware, featured: true }
+  - { name: gtasands, url: https://github.com/sammwyy/gtasands, desc: "native nintendo DS reimplementation (port / demake) of the PC game grand theft auto: san andreas.", category: homebrew, featured: true }
+  - { name: Linux WASM, url: https://github.com/linux-wasm, desc: "linux kernel port to webassembly (arch/wasm) that boots in a browser tab.", category: linux, featured: true }
+  - { name: CreamUI, url: https://github.com/sammwyy/creamui, desc: "a native, reactive UI framework for rust desktop, web & mobile applications.", category: software, featured: true }
+  - { name: Clay, url: https://github.com/sammwyy/clay, desc: compact coding-agent harness built for people who prefer to stay in the terminal., category: ai }
+  - { name: Nux, url: https://github.com/sammwyy/nux, desc: "a modern, daemon-backed terminal multiplexer.", category: software }
+  - { name: Dissect, url: https://github.com/sammwyy/dissect, desc: universal binary patcher and disassembler in the browser., category: reveng }
+  - { name: WebWINE, url: https://github.com/sammwyy/WebWINE, desc: "experimental browser-based windows-like runtime to load, inspect, mount and execute windows PE .exe files.", category: reveng }
+  - { name: Wineland, url: https://github.com/sammwyy/wineland, desc: "windows applications, integrated into linux.", category: linux }
+  - { name: Blair, url: https://github.com/sammwyy/blair, desc: minimal wayland compositor., category: linux }
+  - { name: Coconut, url: https://github.com/sammwyy/coconut, desc: experimental (WIP) desktop shell., category: linux }
+  - { name: Alphin, url: https://github.com/sammwyy/alphin, desc: wayland-based display manager and session lifecycle for the linux desktop., category: linux }
+  - { name: MikuMikuBeam, url: https://github.com/sammwyy/MikuMikuBeam, desc: open-source network stresser but it's hatsune miku., category: software }
+  - { name: BLEeding, url: https://github.com/sammwyy/BLEeding, desc: "bluetooth / BLE jamming, DoS and deauth attack tool.", category: hardware }
+  - { name: MinDNS, url: https://github.com/sammwyy/mindns, desc: minimal DNS server in rust with rule system and logging., category: software }
+  - { name: Lure, url: https://github.com/sammwyy/Lure, desc: next-gen L7 minecraft proxy and load balancer built in rust., category: software }
+  - { name: USBHID, url: https://github.com/sammwyy/usbhid, desc: rust library for the USB HID protocol., category: hardware }
+
+clients:
+  - { name: Eufonia Studio, role: minecraft modding, url: https://x.com/eufoniastudio }
+  - { name: Rubius, role: twitch integrations & modding, url: https://twitch.tv/rubius }
+  - { name: Robleis, role: twitch integrations & modding, url: https://www.twitch.tv/robleis }
+  - { name: Carreraaa, role: twitch integrations, url: https://www.twitch.tv/carreraaa }
+  - { name: Cry, role: twitch integrations & modding, url: https://www.twitch.tv/xcry }
+  - { name: Staryuuki, role: twitch integrations, url: https://www.twitch.tv/staryuuki }
+  - { name: Spreen, role: twitch integrations, url: https://www.twitch.tv/elspreen }
+  - { name: Farfadox, role: software development, url: https://www.twitch.tv/farfadoxvevo }
+  - { name: Lexosi, role: twitch integrations, url: https://www.twitch.tv/lexosi }
+  - { name: Soarinng, role: minecraft modding, url: https://www.twitch.tv/soarinng }
+  - { name: Alexby11, role: game server management, url: https://www.twitch.tv/alexby11 }
+  - { name: Pipepino, role: website development, url: https://www.youtube.com/c/pipepino }
+  - { name: Jota, role: website development, url: https://www.youtube.com/@Jota. }
+  - { name: FapParaMoar, role: twitch integrations, url: https://www.twitch.tv/fapparamoar }

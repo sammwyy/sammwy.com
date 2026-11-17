@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import ViewHead from "../components/ViewHead.astro";
+import Sfx from "../components/Sfx.astro";
+
+Astro.response.status = 404;
+---
+<Base title="404">
+<ViewHead title="404" path={Astro.url.pathname.slice(1) || "?"} sub="node not found" />
+<section class="glass hud warn lost">
+<p class="w-title"><img class="ico" src="/assets/icons/warning.png" alt="" width="32" height="32" /> SIGNAL LOST</p>
+<p>the address you followed doesn't route anywhere.<br />maybe it never existed. maybe it was never meant to.</p>
+<p class="w-code">ERR 0x404 // {Astro.url.pathname}</p>
+<a class="gloss" href="/">&laquo; back to / (root)<Sfx /></a>
+</section>
+</Base>

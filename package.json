@@ -1,0 +1,19 @@
+{
+  "name": "sammwy-com",
+  "version": "5.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "node --env-file-if-exists=.env ./dist/server/entry.mjs",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/node": "11.1.9",
+    "astro": "7.4.1",
+    "marked": "18.1.3",
+    "yaml": "2.9.1"
+  }
+}

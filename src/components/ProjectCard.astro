@@ -1,0 +1,10 @@
+---
+import { getCategory, type Project } from "../lib/data";
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const cat = getCategory(project.category);
+---
+<a class="proj" href={project.url}><b>{project.name}</b><span>{project.desc}</span>{cat && <i class="cat-chip"><img class="cat-ico" src={`/assets/icons/${cat.icon}.png`} alt="" width="64" height="64" />{cat.label}</i>}</a>

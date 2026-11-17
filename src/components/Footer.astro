@@ -1,0 +1,31 @@
+---
+import type { Site } from "../lib/data";
+
+interface Props {
+  site: Site;
+  visitors: number;
+}
+const { site, visitors } = Astro.props;
+const from = encodeURIComponent(site.domain);
+---
+<footer class="foot">
+<div class="badges">
+<a class="b88 b1" href="/">{site.domain.split(".")[0].toUpperCase()}<br />.{site.domain.split(".")[1].toUpperCase()}</a>
+<a class="b88-link" href={`${site.webring.base}/`}><img src={site.webring.button} width="88" height="31" alt="Cyber Angel Webring" /></a>
+<span class="b88 b4">made w/<br />notepad</span>
+</div>
+<nav class="webring" aria-label={site.webring.name}>
+<a href={`${site.webring.base}/prev?from=${from}`}>&laquo; prev</a>
+<span>&#9670;</span>
+<a href={`${site.webring.base}/`}>{site.webring.name}</a>
+<span>&#9670;</span>
+<a href={`${site.webring.base}/random?from=${from}`}>random</a>
+<span>&#9670;</span>
+<a href={`${site.webring.base}/next?from=${from}`}>next &raquo;</a>
+</nav>
+<p class="counter">VISITOR NO. <span>{String(visitors).padStart(6, "0")}</span></p>
+<p class="copy" set:html={site.footer.copy} />
+<p class="credits">icons: <a href="/assets/icons/LICENSE-crystal-project.txt">Crystal Project</a> by Everaldo Coelho (LGPL)</p>
+<div class="jp-disc"><marquee scrollamount="2">&#10023; {site.footer.jp} &#10023;</marquee></div>
+<p class="secret">{site.footer.secret}</p>
+</footer>

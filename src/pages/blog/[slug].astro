@@ -1,0 +1,34 @@
+---
+import Base from "../../layouts/Base.astro";
+import ViewHead from "../../components/ViewHead.astro";
+import BlogSidebar from "../../components/BlogSidebar.astro";
+import Sfx from "../../components/Sfx.astro";
+import { formatDate, getPost, getPosts } from "../../lib/blog";
+
+const found = getPost(Astro.params.slug ?? "");
+if (!found) return Astro.rewrite("/404");
+const { post, newer, older } = found;
+---
+<Base title={post.title.toUpperCase()} description={post.description || post.brief || post.title}>
+<ViewHead title="BLOG" path={`blog / ${post.slug}`} sub={`transmission #${post.n}`} />
+
+<div class="layout layout-blog">
+<BlogSidebar posts={getPosts()} year={post.year} current={post.slug} />
+
+<main class="col-c">
+<article class="glass hud post">
+<header class="post-head">
+<p class="bh-label"><b>#{post.n}</b> <span>{formatDate(post)} &middot; {post.minutes} min read</span></p>
+<h1>{post.title}</h1>
+{post.description && <p class="bh-desc">{post.description}</p>}
+</header>
+<div class="prose" set:html={post.html} />
+</article>
+
+<nav class="post-nav" aria-label="more transmissions">
+{older ? <a class="gloss" href={`/blog/${older.slug}`}>&laquo; #{older.n} {older.title}<Sfx /></a> : <span></span>}
+{newer && <a class="gloss" href={`/blog/${newer.slug}`}>#{newer.n} {newer.title} &raquo;<Sfx /></a>}
+</nav>
+</main>
+</div>
+</Base>

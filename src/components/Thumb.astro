@@ -1,0 +1,17 @@
+---
+import type { Project } from "../lib/data";
+import { bannerFor } from "../lib/banner";
+
+interface Props {
+  project: Project;
+  big?: boolean;
+}
+const { project, big = false } = Astro.props;
+const b = bannerFor(project);
+---
+<span class:list={["thumb", `pat-${b.pattern}`, { big }]} style={`--h:${b.hue};--d:-${b.delay}s`}>
+<svg class="thumb-icon" viewBox="0 0 11 8" shape-rendering="crispEdges" aria-hidden="true">
+{b.frames.map((f, i) => <g class={`f${i + 1}`}>{f.map((p) => <path d={p.d} style={`fill:${p.fill}`} />)}</g>)}
+</svg>
+<span class="thumb-name">{project.name}</span>
+</span>

@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+import SvgDefs from "../components/SvgDefs.astro";
+import Background from "../components/Background.astro";
+import Sysbar from "../components/Sysbar.astro";
+import Footer from "../components/Footer.astro";
+import { getSite } from "../lib/data";
+import { bumpVisitors, getVisitors } from "../lib/counter";
+
+interface Props {
+  title?: string;
+  description?: string;
+  bare?: boolean;
+  full?: boolean;
+  wii?: boolean;
+}
+const site = getSite();
+const visitors = Astro.request.headers.get("x-nav") ? getVisitors() : bumpVisitors();
+const { title, bare = false, full = false, wii = false, description = "sammwy's personal node. cybersecurity, malware research, reverse engineering and y2k internet." } = Astro.props;
+const fullTitle = title ? `${title} // ${site.domain.toUpperCase()}` : `${site.domain.toUpperCase()} // personal node`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=DotGothic16&family=Exo+2:wght@400;600&family=M+PLUS+Rounded+1c:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<script is:inline src="/sfx.js" defer></script>
+<script is:inline src="/nav.js" defer></script>
+</head>
+<body class:list={{ "wii-mode": wii }}>
+<SvgDefs />
+{!wii && <Background />}
+<div class:list={["shell", { bare, full }]}>
+<Sysbar site={site} />
+<slot />
+{!bare && <Footer site={site} visitors={visitors} />}
+</div>
+</body>
+</html>

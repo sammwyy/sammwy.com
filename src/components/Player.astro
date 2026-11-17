@@ -1,0 +1,17 @@
+---
+import Sfx from "./Sfx.astro";
+import type { Site } from "../lib/data";
+
+interface Props {
+  np: Site["nowPlaying"];
+}
+const { np } = Astro.props;
+---
+<section class="glass hud player">
+<h2 class="ph"><b>FM</b> NOW PLAYING</h2>
+<div class="cd"><span></span></div>
+<p class="song">{np.artist}<br /><small>{np.track}</small></p>
+<div class="eqz">{Array.from({ length: 10 }, () => <i></i>)}</div>
+<div class="pbar"><span></span></div>
+<div class="pbtns">{["prev", "pause", "next"].map((i) => <span><img class="ico" src={`/assets/icons/${i}.png`} alt={i} width="32" height="32" /><Sfx /></span>)}</div>
+</section>

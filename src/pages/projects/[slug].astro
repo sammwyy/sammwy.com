@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import Thumb from "../../components/Thumb.astro";
+import Sfx from "../../components/Sfx.astro";
+import { getCategory, getProject } from "../../lib/data";
+
+const project = getProject(Astro.params.slug ?? "");
+if (!project) return Astro.rewrite("/404");
+const cat = getCategory(project.category);
+---
+<Base title={project.name.toUpperCase()} bare full wii description={`${project.name}: ${project.desc}`}>
+<main class="wm wm-preview">
+<div class="wm-banner">
+<Thumb project={project} big />
+</div>
+<div class="wm-about">
+<p class="wm-desc">{project.desc}</p>
+{cat && <p class="wm-meta"><a href={`/projects?cat=${cat.id}`}><img class="cat-ico" src={`/assets/icons/${cat.icon}.png`} alt="" width="64" height="64" />{cat.label}</a></p>}
+</div>
+<div class="wm-actions">
+<a class="wm-btn" href="/projects">Back<Sfx kind="close" /></a>
+<a class="wm-btn" href={project.url}>Start<Sfx /></a>
+</div>
+</main>
+</Base>

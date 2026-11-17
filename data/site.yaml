@@ -1,0 +1,84 @@
+domain: sammwy.com
+repo: sammwyy/sammwy.com
+branch: main
+version: v5
+node: AR-0024
+timezone: America/Argentina/Buenos_Aires
+lastModified: 2026-11-16T03:16:00-03:00
+
+nav:
+  - { href: /, label: / about me }
+  - { href: /projects, label: /projects }
+  - { href: /blog, label: /blog }
+
+hero:
+  pre: personal_node / argentina
+  title: SAMMWY
+  kata: [サミー, ドットコム, ワイヤード]
+  tag: present day . present time
+  code: SMW-0024-AR // FULL-TIME UNEMPLOYED
+
+profile:
+  avatar: https://avatars.githubusercontent.com/u/44925968?size=128
+  fields:
+    - [NAME, sammwy]
+    - [AGE, "24"]
+    - [FROM, argentina]
+    - [PRON, any you want]
+    - [TYPE, INTJ]
+  stats:
+    - { label: SIGNAL, value: 71 }
+    - { label: MACCHIATO, value: 88 }
+    - { label: SLEEP, value: 14, low: true }
+  camCaption: live from the desk. probably asleep.
+
+popup:
+  title: signal.exe
+  text: unknown signal detected on this frequency.<br>keep listening?
+  actions: [ignore, listen]
+
+tape: "/// THIS SITE IS 100% JAVASCRIPT-FREE /// THE PREVIOUS STATEMENT IS A LIE /// FULL-TIME UNEMPLOYED /// SENIOR C/C++ LARPER /// MORE MEDIA HOARDED THAN EVER WATCHED /// PLAN TO WATCH: 247 /// STEAM BACKLOG SPEEDRUNNER /// WORKS ON MY MACHINE /// SEGFAULT CONNOISSEUR ///"
+
+nowPlaying:
+  artist: inabakumori
+  track: lagtrain.mp3
+
+about:
+  lead: hey, i'm <b>sammwy</b> ~ cybersecurity, malware research &amp; reverse engineering.
+  paragraphs:
+    - i also build full-stack systems and lately i've been experimenting with AI agents. self-taught. learned the hard way.
+    - "off the clock: anime, y2k internet, breakcore and retro 8/16-bit games. aesthetics rotate between jirai kei, yami kawaii, visual kei, tenshi kaiwai and pastel goth."
+    - fueled by pasta (canelones &amp; ravioles), caramel macchiato and mint ice cream. minimalism enjoyer.
+  chips: [cybersecurity, malware, reverse eng, fullstack, ai agents, y2k, jirai kei, yami kawaii]
+
+status:
+  online: true
+  lastWatched: madoka magica
+  lastCleared: slow damage
+
+quote:
+  text: "\"no matter where you go,<br>everyone's connected.\""
+  author: lain, 1998
+
+warn:
+  title: UNSTABLE NODE
+  text: uplink may drop without notice.<br>some transmissions arrive out of order.<br>what you see here is cached.
+  code: REF 0x0416
+
+pet:
+  name: bit
+  age: 3 days
+  hunger: 3
+  happy: 4
+
+featuredProjects: 4
+
+webring:
+  name: cyber angel webring
+  base: https://webring.celestelove.dev
+  button: https://webring.celestelove.dev/button-88x31.svg
+
+footer:
+  copy: "&copy; 2026 SAMMWY.COM // not affiliated with McDonald's&reg; // let's all love lain"
+  jp: この さいと の ないよう に よって しょうじる あんしん・ふあん・どきどき・むいみ な きょうふ・または きゃらめる まきあーと を のみたく なる しょうどう は すべて じこ せきにん で おねがいします
+  secret: if you can read this, you are already wired. close the other tabs. stay.

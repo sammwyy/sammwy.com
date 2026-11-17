@@ -1,0 +1,19 @@
+---
+import Sfx from "./Sfx.astro";
+import type { Site } from "../lib/data";
+
+interface Props {
+  site: Site;
+}
+const { site } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) => (href === "/" ? path === "/" : path === href || path.startsWith(`${href}/`));
+---
+<nav class="sysbar" aria-label="site">
+<a class="home" href="/">{site.domain}<Sfx /></a>
+<div class="tabs">
+{site.nav.map((t) => (
+  <a class:list={["tab", { on: isActive(t.href) }]} href={t.href} aria-current={isActive(t.href) ? "page" : undefined}>{t.label}<Sfx /></a>
+))}
+</div>
+</nav>

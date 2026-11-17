@@ -1,0 +1,33 @@
+name: guestbook check
+
+on:
+  pull_request:
+    paths:
+      - data/guestbook.yaml
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: only the guestbook may change
+        run: |
+          changed=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")
+          echo "$changed"
+          if [ "$changed" != "data/guestbook.yaml" ]; then
+            echo "::error::guestbook PRs may only modify data/guestbook.yaml"
+            exit 1
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts
+      - name: validate entry
+        run: |
+          git show "origin/${{ github.base_ref }}:data/guestbook.yaml" > /tmp/base.yaml
+          node scripts/guestbook.mjs validate /tmp/base.yaml data/guestbook.yaml

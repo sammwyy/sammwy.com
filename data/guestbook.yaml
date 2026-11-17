@@ -1,0 +1,14 @@
+# sign the guestbook by adding ONE entry at the end of the list and opening a pull request.
+# only fill `name`, `text` and (optionally) `psm`. github, avatar, pr and date are added automatically after merge.
+# emotes: write them as :code:, e.g. :red-heart: :smile: :wink: :bunny: (see public/assets/emotes)
+#
+#   - name: your name
+#     psm: optional personal message (max 60 chars)
+#     text: "your message (max 280 chars)"
+
+entries:
+  - name: sammwy
+    text: "sam!!! ur page looks soooo pretty aaaa. thx sammy <3 i love u, me too sammy <3"
+    github: sammwyy
+    avatar: https://github.com/sammwyy.png?size=64
+    date: 2026-11-17T04:05:00-03:00

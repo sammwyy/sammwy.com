@@ -1,0 +1,47 @@
+---
+import Wlm from "./Wlm.astro";
+import { getGuestbook, getSite } from "../lib/data";
+import { emoteSrc } from "../lib/assets";
+
+const site = getSite();
+const entries = [...getGuestbook()].reverse();
+const signUrl = `https://github.com/${site.repo}/edit/${site.branch}/data/guestbook.yaml`;
+const tokens = (text: string) =>
+  String(text)
+    .split(/:([\w-]+):/g)
+    .map((t, i) => {
+      const src = i % 2 ? emoteSrc(t) : null;
+      return src ? { src, code: t } : { text: i % 2 ? `:${t}:` : t };
+    });
+const when = (d?: string | Date) => {
+  if (!d) return "";
+  const date = d instanceof Date ? d : new Date(d);
+  if (Number.isNaN(date.getTime())) return String(d);
+  const p = Object.fromEntries(
+    new Intl.DateTimeFormat("en-GB", { timeZone: site.timezone, day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false })
+      .formatToParts(date)
+      .map((x) => [x.type, x.value]),
+  );
+  return `${p.day}/${p.month}/${p.year} ${p.hour}:${p.minute}`;
+};
+const prNum = (url?: string) => url?.match(/\/pull\/(\d+)/)?.[1];
+---
+<section class="glass hud gb" id="guestbook">
+<h2 class="ph big"><b>04</b> GUESTBOOK <span class="hatch"></span><small>{entries.length} MSG{entries.length === 1 ? "" : "S"}</small></h2>
+{entries.map((e) => (
+  <div class="msg">
+    <Wlm status={e.status ?? "on"} avatar={e.avatar ?? (e.github ? `https://github.com/${e.github}.png?size=64` : undefined)} style={e.avatar || e.github ? undefined : "a1"} alt={e.name} />
+    <div class="msg-body">
+      <p class="who">
+        {e.github ? <a href={`https://github.com/${e.github}`}><b>{e.name}</b></a> : <b>{e.name}</b>} says:
+        <span>{when(e.date)}</span>
+        {prNum(e.pr) && <a class="gb-pr" href={e.pr}>PR #{prNum(e.pr)}</a>}
+      </p>
+      {e.psm && <p class="psm">{e.psm}</p>}
+      <p>{tokens(e.text).map((t) => ("src" in t ? <img class="emo" src={t.src} alt={`:${t.code}:`} width="19" height="19" /> : t.text))}</p>
+    </div>
+  </div>
+))}
+<a class="gloss wide" href={signUrl}>sign guestbook &raquo; <small>(via github PR)</small></a>
+<p class="gb-help">edit <code>data/guestbook.yaml</code>, add your entry at the end and open a pull request. your github avatar and the PR link get added automatically once it's merged.</p>
+</section>
